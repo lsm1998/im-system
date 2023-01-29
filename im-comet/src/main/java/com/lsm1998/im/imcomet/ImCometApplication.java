@@ -1,13 +1,11 @@
 package com.lsm1998.im.imcomet;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import com.lsm1998.im.imcomet.server.LimServer;
 
-@SpringBootApplication
-public class ImCometApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(ImCometApplication.class, args);
-	}
-
+public class ImCometApplication
+{
+    public static void main(String[] args)
+    {
+        LimServer server = new LimServer(9090);
+    }
 }

@@ -1,4 +1,4 @@
-package com.lsm1998.im.imlogic.user.model;
+package com.lsm1998.im.imjob.user.dao;
 
 public interface UserDataEntity
 {

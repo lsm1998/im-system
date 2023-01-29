@@ -1,1 +1,1 @@
-package com.lsm1998.im.imlogic.user;
+package com.lsm1998.im.imjob.user;
