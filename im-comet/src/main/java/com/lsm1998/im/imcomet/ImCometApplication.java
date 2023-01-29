@@ -6,6 +6,7 @@ public class ImCometApplication
 {
     public static void main(String[] args)
     {
-        LimServer server = new LimServer(9090);
+        LimServer server = new LimServer();
+        server.bind(9090);
     }
 }

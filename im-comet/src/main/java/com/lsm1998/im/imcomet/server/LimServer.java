@@ -10,30 +10,31 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 public class LimServer
 {
-    private int port;
+    private final ServerBootstrap server;
 
-    public LimServer(int port)
+    public LimServer()
     {
-        this.port = port;
-
         EventLoopGroup mainGroup = new NioEventLoopGroup();
         EventLoopGroup subGroup = new NioEventLoopGroup();
 
-        ServerBootstrap server = new ServerBootstrap();
-        server.group(mainGroup , subGroup).
+        this.server = new ServerBootstrap();
+        server.group(mainGroup, subGroup).
                 channel(NioServerSocketChannel.class).
-                option(ChannelOption.SO_BACKLOG , 10240).
-                option(ChannelOption.SO_REUSEADDR , true).
-                option(ChannelOption.TCP_NODELAY , true).
-                option(ChannelOption.SO_KEEPALIVE , true).
+                option(ChannelOption.SO_BACKLOG, 10240).
+                option(ChannelOption.SO_REUSEADDR, true).
+                option(ChannelOption.TCP_NODELAY, true).
+                option(ChannelOption.SO_KEEPALIVE, true).
                 childHandler(new ChannelInitializer<>()
                 {
                     @Override
                     protected void initChannel(Channel channel) throws Exception
                     {
-
                     }
                 });
-        server.bind(this.port);
+    }
+
+    public void bind(int port)
+    {
+        server.bind(port);
     }
 }
