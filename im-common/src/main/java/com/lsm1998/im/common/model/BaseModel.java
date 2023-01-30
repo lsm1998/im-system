@@ -13,4 +13,6 @@ public class BaseModel implements Serializable
     private Date createTime;
 
     private Date updateTime;
+
+    private Long deletedAt;
 }

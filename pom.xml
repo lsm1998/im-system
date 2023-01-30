@@ -19,6 +19,7 @@
 
     <modules>
         <module>im-common</module>
+        <module>im-admin</module>
         <module>im-comet</module>
         <module>im-logic</module>
         <module>im-job</module>
