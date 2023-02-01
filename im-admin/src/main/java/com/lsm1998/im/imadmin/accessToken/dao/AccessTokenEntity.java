@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName("admin_access_token")
+@TableName("access_token")
 public class AccessTokenEntity extends BaseModel
 {
     private String appId;

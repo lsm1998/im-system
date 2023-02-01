@@ -9,7 +9,7 @@ import java.util.Date;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName("admin_tenant")
+@TableName("tenant")
 public class TenantEntity extends BaseModel
 {
     private String appId;
