@@ -5,8 +5,6 @@ package com.lsm1998.im.common.exception;
  */
 public final class ServiceException extends RuntimeException
 {
-    private static final long serialVersionUID = 1L;
-
     /**
      * 错误码
      */
@@ -34,7 +32,7 @@ public final class ServiceException extends RuntimeException
         this.message = message;
     }
 
-    public ServiceException(String message, Integer code)
+    public ServiceException(Integer code, String message)
     {
         this.message = message;
         this.code = code;

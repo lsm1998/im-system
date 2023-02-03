@@ -28,7 +28,7 @@ public class AjaxResponse extends HashMap<String, Object>
 
     public static AjaxResponse failWithParam()
     {
-        return AjaxResponse.of(CODE_PARAM_ERROR, MESSAGE_PARAM_ERROR, null);
+        return AjaxResponse.of(PARAM_ERROR_CODE, PARAM_ERROR_MESSAGE, null);
     }
 
     public static AjaxResponse fail(int code, String message)
@@ -38,21 +38,21 @@ public class AjaxResponse extends HashMap<String, Object>
 
     public static AjaxResponse fail(String message)
     {
-        return AjaxResponse.of(CODE_SERVER_ERROR, message, null);
+        return AjaxResponse.of(SERVER_ERROR_CODE, message, null);
     }
 
     public static AjaxResponse fail()
     {
-        return AjaxResponse.of(CODE_SERVER_ERROR, MESSAGE_SERVER_ERROR, null);
+        return AjaxResponse.of(SERVER_ERROR_CODE, SERVER_ERROR_MESSAGE, null);
     }
 
     public static AjaxResponse success()
     {
-        return AjaxResponse.of(CODE_OK, MESSAGE_OK, null);
+        return AjaxResponse.of(OK_CODE, OK_MESSAGE, null);
     }
 
     public static AjaxResponse success(Object data)
     {
-        return AjaxResponse.of(CODE_OK, MESSAGE_OK, data);
+        return AjaxResponse.of(OK_CODE, OK_MESSAGE, data);
     }
 }

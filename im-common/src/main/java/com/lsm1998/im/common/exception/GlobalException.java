@@ -5,8 +5,6 @@ package com.lsm1998.im.common.exception;
  */
 public class GlobalException extends RuntimeException
 {
-    private static final long serialVersionUID = 1L;
-
     /**
      * 错误提示
      */
