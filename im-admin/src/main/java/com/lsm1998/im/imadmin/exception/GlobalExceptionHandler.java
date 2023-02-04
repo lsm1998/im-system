@@ -3,8 +3,6 @@ package com.lsm1998.im.imadmin.exception;
 import com.lsm1998.im.common.AjaxResponse;
 import com.lsm1998.im.common.exception.ServiceException;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.validation.BindException;

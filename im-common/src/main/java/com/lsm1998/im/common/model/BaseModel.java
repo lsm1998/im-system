@@ -1,6 +1,7 @@
 package com.lsm1998.im.common.model;
 
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -18,5 +19,6 @@ public class BaseModel implements Serializable
 
     private Date updateTime;
 
+    @TableLogic(value = "0", delval = "unix_timestamp(now())")
     private Long deletedAt;
 }

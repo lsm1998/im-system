@@ -12,13 +12,5 @@ import java.util.Date;
 @TableName("tenant")
 public class TenantEntity extends BaseModel
 {
-    private String appId;
-
-    private Long balance;
-
-    private Date expire;
-
-    private Long maxTeamSize;
-
-    private Long currentTeamSize;
+    private String appid;
 }
