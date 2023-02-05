@@ -1,6 +1,9 @@
 spring:
   profiles:
-    active: druid
+    active: druid,redis
 
 server:
   port: 9870
+
+jwt:
+  secretKey: uGlrwikdKkdasijwinxzcnm
