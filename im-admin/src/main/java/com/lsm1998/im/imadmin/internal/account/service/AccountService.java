@@ -16,4 +16,6 @@ public interface AccountService
     AccountEntity getAccount(String token);
 
     AccountCreateResponse create(AccountCreateRequest request);
+
+    void createBaseAccount(Long tenantId);
 }

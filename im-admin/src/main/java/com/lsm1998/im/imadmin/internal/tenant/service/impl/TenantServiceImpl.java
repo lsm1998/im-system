@@ -4,6 +4,7 @@ import com.lsm1998.im.common.exception.ServiceException;
 import com.lsm1998.im.imadmin.internal.tenant.dao.TenantEntity;
 import com.lsm1998.im.imadmin.internal.tenant.dao.mapper.TenantMapper;
 import com.lsm1998.im.imadmin.internal.tenant.service.TenantService;
+import com.lsm1998.im.imadmin.middleware.rabbitmq.RabbitPublish;
 import com.lsm1998.im.imadmin.utils.StringUtil;
 import jakarta.annotation.Resource;
 import org.springframework.dao.DuplicateKeyException;
@@ -40,13 +41,18 @@ public class TenantServiceImpl implements TenantService
     @Resource
     private TenantMapper tenantMapper;
 
-    private String generateWithFixed(String appid) throws ServiceException
+    @Resource
+    private RabbitPublish publish;
+
+    @Transactional
+    protected String generateWithFixed(String appid) throws ServiceException
     {
         TenantEntity tenant = new TenantEntity();
         tenant.setAppid(appid);
         try
         {
             tenantMapper.insert(tenant);
+            publish.publish("tenant_create", tenant);
         } catch (DuplicateKeyException e)
         {
             throw new ServiceException(APPID_INSERT_ERROR_CODE, APPID_INSERT_ERROR_MESSAGE);
@@ -69,6 +75,7 @@ public class TenantServiceImpl implements TenantService
             try
             {
                 tenantMapper.insert(tenant);
+                publish.publish("tenant_create", tenant);
             } catch (DuplicateKeyException e)
             {
                 continue;

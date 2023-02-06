@@ -76,4 +76,10 @@ public class AccountServiceImpl implements AccountService
     {
         return null;
     }
+
+    @Override
+    public void createBaseAccount(Long tenantId)
+    {
+
+    }
 }
