@@ -1,15 +1,13 @@
 package com.lsm1998.im.imadmin.internal.account.controller;
 
 import com.lsm1998.im.common.AjaxResponse;
+import com.lsm1998.im.imadmin.internal.account.model.request.AccountCreateRequest;
+import com.lsm1998.im.imadmin.internal.account.model.request.LoginOutRequest;
 import com.lsm1998.im.imadmin.internal.account.model.request.LoginRequest;
 import com.lsm1998.im.imadmin.internal.account.service.AccountService;
 import jakarta.annotation.Resource;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import javax.servlet.http.HttpServletRequest;
+import org.springframework.web.bind.annotation.*;
+import com.lsm1998.im.common.annotations.AccessPermission;
 
 @RestController
 @RequestMapping("account")
@@ -19,9 +17,34 @@ public class AccountController
     private AccountService accountService;
 
     @PostMapping("login")
-    public AjaxResponse login(HttpServletRequest request, @RequestBody LoginRequest loginData)
+    public AjaxResponse login( @RequestBody LoginRequest request)
     {
-        loginData.setLoginIp(request.getRemoteHost());
-        return AjaxResponse.success(accountService.login(loginData));
+        // todo
+        // request.setLoginIp(request.getRemoteHost());
+        return AjaxResponse.success(accountService.login(request));
+    }
+
+    @PostMapping("loginOut")
+    @AccessPermission(url = "/account/loginOut")
+    public AjaxResponse loginOut()
+    {
+        LoginOutRequest request = new LoginOutRequest();
+        request.setToken("");
+        accountService.loginOut(request);
+        return AjaxResponse.success();
+    }
+
+    @GetMapping("profile")
+    @AccessPermission(url = "/account/profile")
+    public AjaxResponse profile()
+    {
+        return AjaxResponse.success(accountService.getAccount(""));
+    }
+
+    @PostMapping("create")
+    @AccessPermission(url = "/account/create")
+    public AjaxResponse create(@RequestBody AccountCreateRequest request)
+    {
+        return AjaxResponse.success(accountService.create(request));
     }
 }

@@ -1,7 +1,7 @@
 package com.lsm1998.im.imadmin.internal.tenant.controller;
 
 import com.lsm1998.im.common.AjaxResponse;
-import com.lsm1998.im.imadmin.annotation.AccessPermission;
+import com.lsm1998.im.common.annotations.AccessPermission;
 import com.lsm1998.im.imadmin.internal.tenant.model.request.RegisterRequest;
 import com.lsm1998.im.imadmin.internal.tenant.service.TenantService;
 import jakarta.annotation.Resource;
@@ -17,8 +17,8 @@ public class TenantController
     @Resource
     private TenantService tenantService;
 
-    @PostMapping("register")
-    @AccessPermission("/tenant/register")
+    @PostMapping("create")
+    @AccessPermission(url = "/tenant/create")
     public AjaxResponse register(@RequestBody RegisterRequest request)
     {
         return AjaxResponse.success(tenantService.generateAppid(request.getAppid()));
