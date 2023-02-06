@@ -1,0 +1,5 @@
+spring:
+  rabbitmq:
+    host: 120.79.132.241
+    username: guest
+    password: lsm1998

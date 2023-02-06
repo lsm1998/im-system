@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: druid,redis
+    active: druid,redis,rabbitmq,minio
 
 server:
   port: 9870
