@@ -14,5 +14,5 @@ public class AccessTokenEntity extends BaseModel
 
     private String accessKey;
 
-    private String secureKey;
+    private String secretKey;
 }

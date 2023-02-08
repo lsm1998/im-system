@@ -84,4 +84,10 @@ public class TenantServiceImpl implements TenantService
         }
         throw new ServiceException(APPID_INSERT_ERROR_CODE, APPID_INSERT_ERROR_MESSAGE);
     }
+
+    @Override
+    public int delete(Long id)
+    {
+        return tenantMapper.deleteById(id);
+    }
 }

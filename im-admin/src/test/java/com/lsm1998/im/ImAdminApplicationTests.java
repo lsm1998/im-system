@@ -68,4 +68,10 @@ class ImAdminApplicationTests
     {
         System.out.println(minioComponent.upload("im-admin", new File("C:\\Users\\p8s8liushim\\Pictures\\images.png")));
     }
+
+    @Test
+    void deleteTenant()
+    {
+        System.out.println(tenantService.delete(1L));
+    }
 }
