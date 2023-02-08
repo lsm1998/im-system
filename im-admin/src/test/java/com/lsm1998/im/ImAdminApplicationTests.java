@@ -4,10 +4,13 @@ import com.lsm1998.im.imadmin.ImAdminApplication;
 import com.lsm1998.im.imadmin.internal.role.sevice.RoleService;
 import com.lsm1998.im.imadmin.internal.tenant.dao.TenantEntity;
 import com.lsm1998.im.imadmin.internal.tenant.service.TenantService;
+import com.lsm1998.im.imadmin.middleware.minio.MinioComponent;
 import com.lsm1998.im.imadmin.middleware.rabbitmq.RabbitPublish;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.io.File;
 
 @SpringBootTest(classes = ImAdminApplication.class)
 class ImAdminApplicationTests
@@ -20,6 +23,9 @@ class ImAdminApplicationTests
 
     @Resource
     private RabbitPublish publish;
+
+    @Resource
+    private MinioComponent minioComponent;
 
     @Test
     void contextLoads()
@@ -44,6 +50,22 @@ class ImAdminApplicationTests
     {
         TenantEntity tenant = new TenantEntity();
         tenant.setAppid("appid");
-        publish.publish("tenant_create" , tenant);
+        publish.publish("tenant_create", tenant);
+    }
+
+    @Test
+    void bucket()
+    {
+        String bucketName = "im-admin";
+        if (!minioComponent.bucketExists(bucketName))
+        {
+            minioComponent.makeBucket("im-admin");
+        }
+    }
+
+    @Test
+    void upload()
+    {
+        System.out.println(minioComponent.upload("im-admin", new File("C:\\Users\\p8s8liushim\\Pictures\\images.png")));
     }
 }

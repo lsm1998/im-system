@@ -50,6 +50,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.5.3.1</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>1.2.15</version>
@@ -77,6 +83,12 @@
             <artifactId>minio</artifactId>
             <version>8.0.3</version>
         </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>org.junit.jupiter</groupId>-->
+<!--            <artifactId>junit-jupiter-api</artifactId>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
 
         <!-- servlet包 -->
         <dependency>

@@ -19,7 +19,7 @@ public class TenantController
 
     @PostMapping("create")
     @AccessPermission(url = "/tenant/create")
-    public AjaxResponse register(@RequestBody RegisterRequest request)
+    public AjaxResponse create(@RequestBody RegisterRequest request)
     {
         return AjaxResponse.success(tenantService.generateAppid(request.getAppid()));
     }

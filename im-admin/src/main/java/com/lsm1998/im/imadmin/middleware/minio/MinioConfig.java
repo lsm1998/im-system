@@ -16,4 +16,6 @@ public class MinioConfig
     private String secretKey;
 
     private String bucketName;
+
+    private String fileHost;
 }

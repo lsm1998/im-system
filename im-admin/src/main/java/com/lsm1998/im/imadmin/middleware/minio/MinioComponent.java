@@ -7,6 +7,8 @@ import jakarta.annotation.Resource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.UUID;
@@ -93,7 +95,28 @@ public class MinioComponent
             e.printStackTrace();
             return null;
         }
-        return objectName;
+        return String.format("%s/%s/%s" , config.getFileHost() , bucketName, objectName);
+    }
+
+    public String upload(String bucketName, File file)
+    {
+        String originalFilename = file.getName();
+        String fileName = UUID.randomUUID().toString()
+                .replaceAll("-", "") + originalFilename.substring(originalFilename.lastIndexOf("."));
+        String objectName = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance()
+                .getTime()) + "/" + fileName;
+        try (FileInputStream stream = new FileInputStream(file))
+        {
+            PutObjectArgs objectArgs = PutObjectArgs.builder().bucket(bucketName).object(objectName).
+                    stream(stream, file.length(), -1).build();
+            //文件名称相同会覆盖
+            minioClient.putObject(objectArgs);
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+        return String.format("%s/%s/%s" , config.getFileHost() , bucketName, objectName);
     }
 
     /**

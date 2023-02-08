@@ -10,6 +10,6 @@ fs:
   minio:
     endpoint: http://119.91.113.111:9000
     fileHost: http://oss.lsm1998.com:9000
-    accessKey: yidu
-    secretKey: yiduadmin
+    accessKey: imadmin
+    secretKey: imadmin123
     bucketName:
