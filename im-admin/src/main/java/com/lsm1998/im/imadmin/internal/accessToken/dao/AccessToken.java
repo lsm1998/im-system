@@ -7,10 +7,12 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName("access_role")
-public class AccessRoleEntity extends BaseModel
+@TableName("access_token")
+public class AccessToken extends BaseModel
 {
-    private Long accessTokenId;
+    private String appId;
 
-    private Long roleId;
+    private String accessKey;
+
+    private String secretKey;
 }

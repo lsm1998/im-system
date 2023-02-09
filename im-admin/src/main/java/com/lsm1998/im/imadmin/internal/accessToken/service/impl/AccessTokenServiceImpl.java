@@ -1,7 +1,7 @@
 package com.lsm1998.im.imadmin.internal.accessToken.service.impl;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.lsm1998.im.imadmin.internal.accessToken.dao.AccessTokenEntity;
+import com.lsm1998.im.imadmin.internal.accessToken.dao.AccessToken;
 import com.lsm1998.im.imadmin.internal.accessToken.dao.mapper.AccessTokenMapper;
 import com.lsm1998.im.imadmin.internal.accessToken.service.AccessTokenService;
 import jakarta.annotation.Resource;
@@ -14,7 +14,7 @@ public class AccessTokenServiceImpl implements AccessTokenService
     private AccessTokenMapper accessTokenMapper;
 
     @Override
-    public int saveAccessToken(AccessTokenEntity accessToken)
+    public int saveAccessToken(AccessToken accessToken)
     {
         return accessTokenMapper.insert(accessToken);
     }
@@ -26,7 +26,7 @@ public class AccessTokenServiceImpl implements AccessTokenService
     }
 
     @Override
-    public Page<AccessTokenEntity> list(AccessTokenEntity find)
+    public Page<AccessToken> list(AccessToken find)
     {
         return null;
     }
