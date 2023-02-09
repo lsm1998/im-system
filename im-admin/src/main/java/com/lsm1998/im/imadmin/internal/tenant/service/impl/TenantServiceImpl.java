@@ -1,7 +1,7 @@
 package com.lsm1998.im.imadmin.internal.tenant.service.impl;
 
 import com.lsm1998.im.common.exception.ServiceException;
-import com.lsm1998.im.imadmin.internal.tenant.dao.TenantEntity;
+import com.lsm1998.im.imadmin.internal.tenant.dao.Tenant;
 import com.lsm1998.im.imadmin.internal.tenant.dao.mapper.TenantMapper;
 import com.lsm1998.im.imadmin.internal.tenant.service.TenantService;
 import com.lsm1998.im.imadmin.middleware.rabbitmq.RabbitPublish;
@@ -47,7 +47,7 @@ public class TenantServiceImpl implements TenantService
     @Transactional
     protected String generateWithFixed(String appid) throws ServiceException
     {
-        TenantEntity tenant = new TenantEntity();
+        Tenant tenant = new Tenant();
         tenant.setAppid(appid);
         try
         {
@@ -68,7 +68,7 @@ public class TenantServiceImpl implements TenantService
         {
             return this.generateWithFixed(appid);
         }
-        TenantEntity tenant = new TenantEntity();
+        Tenant tenant = new Tenant();
         for (int i = 0; i < 5; i++)
         {
             tenant.setAppid(StringUtil.randomStr(appidLength, appidSeed));

@@ -2,7 +2,7 @@ package com.lsm1998.im.imadmin.internal.tenant.listen;
 
 import com.lsm1998.im.imadmin.internal.account.service.AccountService;
 import com.lsm1998.im.imadmin.internal.role.sevice.RoleService;
-import com.lsm1998.im.imadmin.internal.tenant.dao.TenantEntity;
+import com.lsm1998.im.imadmin.internal.tenant.dao.Tenant;
 import jakarta.annotation.Resource;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.amqp.core.Queue;
@@ -30,7 +30,7 @@ public class TenantCreateListen
 
     @RabbitHandler
     @Transactional
-    public void process(@NotNull TenantEntity tenant)
+    public void process(@NotNull Tenant tenant)
     {
         // 为tenant创建基础权限数据
         roleService.createBaseRole(tenant.getId());

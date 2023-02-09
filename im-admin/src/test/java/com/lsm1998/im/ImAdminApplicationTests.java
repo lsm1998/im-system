@@ -2,7 +2,7 @@ package com.lsm1998.im;
 
 import com.lsm1998.im.imadmin.ImAdminApplication;
 import com.lsm1998.im.imadmin.internal.role.sevice.RoleService;
-import com.lsm1998.im.imadmin.internal.tenant.dao.TenantEntity;
+import com.lsm1998.im.imadmin.internal.tenant.dao.Tenant;
 import com.lsm1998.im.imadmin.internal.tenant.service.TenantService;
 import com.lsm1998.im.imadmin.middleware.minio.MinioComponent;
 import com.lsm1998.im.imadmin.middleware.rabbitmq.RabbitPublish;
@@ -48,7 +48,7 @@ class ImAdminApplicationTests
     @Test
     void publish()
     {
-        TenantEntity tenant = new TenantEntity();
+        Tenant tenant = new Tenant();
         tenant.setAppid("appid");
         publish.publish("tenant_create", tenant);
     }

@@ -9,7 +9,7 @@ spring:
 fs:
   minio:
     endpoint: http://119.91.113.111:9000
-    fileHost: http://oss.lsm1998.com:9000
+    fileHost: http://119.91.113.111:9000
     accessKey: imadmin
     secretKey: imadmin123
     bucketName:
