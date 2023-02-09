@@ -9,6 +9,9 @@ import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 import com.lsm1998.im.common.annotations.AccessPermission;
 
+/**
+ * 账户服务
+ */
 @RestController
 @RequestMapping("account")
 public class AccountController

@@ -1,0 +1,6 @@
+{
+  "outPath": "D:\\code\\im-system\\doc",
+  "coverOld": true,
+  "serverUrl": "http://{{server}}/",
+  "strict": true
+}

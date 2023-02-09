@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 租户服务
+ */
 @RestController
 @RequestMapping("tenant")
 public class TenantController
