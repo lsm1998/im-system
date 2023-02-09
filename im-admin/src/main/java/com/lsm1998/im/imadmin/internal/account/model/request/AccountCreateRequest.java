@@ -9,7 +9,13 @@ import java.util.List;
 @Data
 public class AccountCreateRequest
 {
+    /**
+     * account账户
+     */
     private AccountEntity account;
 
+    /**
+     * 权限
+     */
     private List<RoleEntity> roles;
 }

@@ -16,6 +16,11 @@ public class AccountController
     @Resource
     private AccountService accountService;
 
+    /**
+     * 登录
+     * @param request
+     * @return
+     */
     @PostMapping("login")
     public AjaxResponse login( @RequestBody LoginRequest request)
     {
@@ -24,6 +29,10 @@ public class AccountController
         return AjaxResponse.success(accountService.login(request));
     }
 
+    /**
+     * 退出登录
+     * @return
+     */
     @PostMapping("loginOut")
     @AccessPermission(url = "/account/loginOut")
     public AjaxResponse loginOut()
@@ -34,6 +43,10 @@ public class AccountController
         return AjaxResponse.success();
     }
 
+    /**
+     * 个人信息
+     * @return
+     */
     @GetMapping("profile")
     @AccessPermission(url = "/account/profile")
     public AjaxResponse profile()
@@ -41,6 +54,11 @@ public class AccountController
         return AjaxResponse.success(accountService.getAccount(""));
     }
 
+    /**
+     * 创建账户
+     * @param request
+     * @return
+     */
     @PostMapping("create")
     @AccessPermission(url = "/account/create")
     public AjaxResponse create(@RequestBody AccountCreateRequest request)

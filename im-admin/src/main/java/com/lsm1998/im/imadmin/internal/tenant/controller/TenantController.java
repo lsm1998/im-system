@@ -17,6 +17,12 @@ public class TenantController
     @Resource
     private TenantService tenantService;
 
+    /**
+     * 创建租户
+     *
+     * @param request
+     * @return
+     */
     @PostMapping("create")
     @AccessPermission(url = "/tenant/create")
     public AjaxResponse create(@RequestBody RegisterRequest request)
