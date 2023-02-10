@@ -5,5 +5,8 @@ import lombok.Data;
 @Data
 public class BaseRequest
 {
+    /**
+     * appid
+     */
     private String appid;
 }

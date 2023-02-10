@@ -1,9 +1,9 @@
 package com.lsm1998.im.imadmin.internal.account.controller;
 
 import com.lsm1998.im.common.AjaxResponse;
-import com.lsm1998.im.imadmin.internal.account.model.request.AccountCreateRequest;
-import com.lsm1998.im.imadmin.internal.account.model.request.LoginOutRequest;
-import com.lsm1998.im.imadmin.internal.account.model.request.LoginRequest;
+import com.lsm1998.im.imadmin.internal.account.dto.request.AccountCreateRequest;
+import com.lsm1998.im.imadmin.internal.account.dto.request.LoginOutRequest;
+import com.lsm1998.im.imadmin.internal.account.dto.request.LoginRequest;
 import com.lsm1998.im.imadmin.internal.account.service.AccountService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;

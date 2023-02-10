@@ -1,6 +1,6 @@
-package com.lsm1998.im.imadmin.internal.account.model.request;
+package com.lsm1998.im.imadmin.internal.account.dto.request;
 
-import com.lsm1998.im.imadmin.internal.account.dao.AccountEntity;
+import com.lsm1998.im.imadmin.internal.account.dao.Account;
 import com.lsm1998.im.imadmin.internal.role.dao.RoleEntity;
 import lombok.Data;
 
@@ -12,7 +12,7 @@ public class AccountCreateRequest
     /**
      * account账户
      */
-    private AccountEntity account;
+    private Account account;
 
     /**
      * 权限

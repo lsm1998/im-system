@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @TableName("account")
-public class AccountEntity extends BaseModel
+public class Account extends BaseModel
 {
     private Long tenantId;
 

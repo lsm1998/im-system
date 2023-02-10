@@ -1,6 +1,6 @@
-package com.lsm1998.im.imadmin.internal.account.model.response;
+package com.lsm1998.im.imadmin.internal.account.dto.response;
 
-import com.lsm1998.im.imadmin.internal.account.dao.AccountEntity;
+import com.lsm1998.im.imadmin.internal.account.dao.Account;
 import lombok.Builder;
 import lombok.Data;
 
@@ -8,13 +8,13 @@ import lombok.Data;
 @Builder
 public class LoginResponse
 {
-    private AccountEntity account;
+    private Account account;
 
     private String token;
 
     private Long expire;
 
-    public static LoginResponse of(AccountEntity account, String token, Long expire)
+    public static LoginResponse of(Account account, String token, Long expire)
     {
         return LoginResponse.
                 builder().

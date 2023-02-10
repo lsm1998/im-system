@@ -1,14 +1,14 @@
 package com.lsm1998.im.imadmin.internal.account.service.impl;
 
 import com.lsm1998.im.common.exception.ServiceException;
-import com.lsm1998.im.imadmin.internal.account.dao.AccountEntity;
+import com.lsm1998.im.imadmin.internal.account.dao.Account;
 import com.lsm1998.im.imadmin.internal.account.dao.mapper.AccountMapper;
-import com.lsm1998.im.imadmin.internal.account.model.dto.AccountTokenDto;
-import com.lsm1998.im.imadmin.internal.account.model.request.AccountCreateRequest;
-import com.lsm1998.im.imadmin.internal.account.model.request.LoginOutRequest;
-import com.lsm1998.im.imadmin.internal.account.model.request.LoginRequest;
-import com.lsm1998.im.imadmin.internal.account.model.response.AccountCreateResponse;
-import com.lsm1998.im.imadmin.internal.account.model.response.LoginResponse;
+import com.lsm1998.im.imadmin.internal.account.dto.AccountTokenDto;
+import com.lsm1998.im.imadmin.internal.account.dto.request.AccountCreateRequest;
+import com.lsm1998.im.imadmin.internal.account.dto.request.LoginOutRequest;
+import com.lsm1998.im.imadmin.internal.account.dto.request.LoginRequest;
+import com.lsm1998.im.imadmin.internal.account.dto.response.AccountCreateResponse;
+import com.lsm1998.im.imadmin.internal.account.dto.response.LoginResponse;
 import com.lsm1998.im.imadmin.internal.account.service.AccountService;
 import com.lsm1998.im.imadmin.utils.JwtUtil;
 import com.lsm1998.im.imadmin.utils.PasswordEncrypt;
@@ -29,6 +29,10 @@ public class AccountServiceImpl implements AccountService
 
     private static final Duration DEFAULT_EXPIRE_TIME = Duration.ofHours(24);
 
+    private static final String DEFAULT_ADMIN_USERNAME = "admin";
+
+    private static final String DEFAULT_ADMIN_PASSWORD = "123456";
+
     @Value("${jwt.secretKey}")
     private String secretKey;
 
@@ -44,7 +48,7 @@ public class AccountServiceImpl implements AccountService
     @Override
     public LoginResponse login(LoginRequest request)
     {
-        AccountEntity account = accountMapper.findAllByUsername(request.getUsername());
+        Account account = accountMapper.findAllByUsername(request.getUsername());
         if (account == null)
         {
             throw new ServiceException(USER_NOT_EXIST_ERROR_CODE, USER_NOT_EXIST_ERROR_MESSAGE);
@@ -54,8 +58,9 @@ public class AccountServiceImpl implements AccountService
             throw new ServiceException(LOGIN_ERROR_CODE, LOGIN_ERROR_MESSAGE);
         }
         String token = JwtUtil.createToken(secretKey, expire, Map.of("userId", account.getId()));
-        redisTemplate.opsForValue().set(String.format("%s%s", REDIS_TOKEN_KEY, token), new AccountTokenDto(), DEFAULT_EXPIRE_TIME);
-        return LoginResponse.of(account , token , System.currentTimeMillis() + expire);
+        redisTemplate.opsForValue()
+                .set(String.format("%s%s", REDIS_TOKEN_KEY, token), new AccountTokenDto(), DEFAULT_EXPIRE_TIME);
+        return LoginResponse.of(account, token, System.currentTimeMillis() + expire);
     }
 
     @Override
@@ -65,7 +70,7 @@ public class AccountServiceImpl implements AccountService
     }
 
     @Override
-    public AccountEntity getAccount(String token)
+    public Account getAccount(String token)
     {
         return redisTemplate.opsForValue()
                 .get(String.format("%s%s", REDIS_TOKEN_KEY, token));
@@ -80,6 +85,11 @@ public class AccountServiceImpl implements AccountService
     @Override
     public void createBaseAccount(Long tenantId)
     {
-
+        Account account = new Account();
+        account.setTenantId(tenantId);
+        account.setSalt(PasswordEncrypt.generateSalt());
+        account.setUsername(DEFAULT_ADMIN_USERNAME);
+        account.setPassword(PasswordEncrypt.encrypt(DEFAULT_ADMIN_PASSWORD, account.getSalt()));
+        accountMapper.insert(account);
     }
 }

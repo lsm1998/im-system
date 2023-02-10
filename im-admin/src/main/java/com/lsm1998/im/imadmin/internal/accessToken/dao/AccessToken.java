@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
 @TableName("access_token")
 public class AccessToken extends BaseModel
 {
-    private String appId;
+    private String appid;
 
     private String accessKey;
 

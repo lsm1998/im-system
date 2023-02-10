@@ -6,6 +6,12 @@ import java.security.NoSuchAlgorithmException;
 
 public class PasswordEncrypt
 {
+    public static String generateSalt()
+    {
+        String salt = SHA256(String.valueOf(System.currentTimeMillis()));
+        return salt.substring(0, 6);
+    }
+
     public static String encrypt(String md5Str, String salt)
     {
         return SHA256(md5Str + salt);

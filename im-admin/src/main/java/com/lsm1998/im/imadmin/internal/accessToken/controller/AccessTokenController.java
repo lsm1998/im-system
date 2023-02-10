@@ -2,6 +2,7 @@ package com.lsm1998.im.imadmin.internal.accessToken.controller;
 
 import com.lsm1998.im.common.AjaxResponse;
 import com.lsm1998.im.imadmin.internal.accessToken.dto.request.AccessTokenCreateReq;
+import com.lsm1998.im.imadmin.internal.accessToken.dto.request.AccessTokenListReq;
 import com.lsm1998.im.imadmin.internal.accessToken.dto.request.AccessTokenUpdateReq;
 import com.lsm1998.im.imadmin.internal.accessToken.service.AccessTokenService;
 import jakarta.annotation.Resource;
@@ -21,24 +22,36 @@ public class AccessTokenController
     /**
      * 创建访问凭证
      *
-     * @param request
-     * @return
+     * @param request AccessTokenCreateReq
+     * @return AjaxResponse
      */
     @PostMapping
     public AjaxResponse create(@RequestBody @Valid AccessTokenCreateReq request)
     {
-        return null;
+        return AjaxResponse.success(accessTokenService.saveAccessToken(request));
     }
 
     /**
      * 更新访问凭证
      *
-     * @param request
-     * @return
+     * @param request AccessTokenUpdateReq
+     * @return AjaxResponse
      */
     @PutMapping
     public AjaxResponse update(@RequestBody @Valid AccessTokenUpdateReq request)
     {
-        return null;
+        return AjaxResponse.success(accessTokenService.updateAccessToken(request));
+    }
+
+    /**
+     * 查询列表
+     *
+     * @param request AccessTokenListReq
+     * @return AjaxResponse
+     */
+    @GetMapping
+    public AjaxResponse list(AccessTokenListReq request)
+    {
+        return AjaxResponse.success(accessTokenService.list(request));
     }
 }

@@ -2,7 +2,7 @@ package com.lsm1998.im.imadmin.internal.tenant.controller;
 
 import com.lsm1998.im.common.AjaxResponse;
 import com.lsm1998.im.common.annotations.AccessPermission;
-import com.lsm1998.im.imadmin.internal.tenant.model.request.RegisterRequest;
+import com.lsm1998.im.imadmin.internal.tenant.dto.request.RegisterRequest;
 import com.lsm1998.im.imadmin.internal.tenant.service.TenantService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.PostMapping;

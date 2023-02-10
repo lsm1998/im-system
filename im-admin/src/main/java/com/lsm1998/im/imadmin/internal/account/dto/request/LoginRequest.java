@@ -1,4 +1,4 @@
-package com.lsm1998.im.imadmin.internal.account.model.request;
+package com.lsm1998.im.imadmin.internal.account.dto.request;
 
 import lombok.Data;
 
