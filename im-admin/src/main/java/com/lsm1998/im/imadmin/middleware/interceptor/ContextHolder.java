@@ -1,4 +1,4 @@
-package com.lsm1998.im.imadmin.interceptor;
+package com.lsm1998.im.imadmin.middleware.interceptor;
 
 import com.lsm1998.im.imadmin.internal.account.dao.Account;
 import com.lsm1998.im.imadmin.internal.role.dao.Role;

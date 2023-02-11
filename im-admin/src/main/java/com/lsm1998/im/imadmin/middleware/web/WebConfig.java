@@ -1,6 +1,6 @@
 package com.lsm1998.im.imadmin.middleware.web;
 
-import com.lsm1998.im.imadmin.interceptor.AuthInterceptor;
+import com.lsm1998.im.imadmin.middleware.interceptor.AuthInterceptor;
 import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

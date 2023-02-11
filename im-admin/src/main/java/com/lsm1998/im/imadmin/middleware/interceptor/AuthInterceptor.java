@@ -1,7 +1,11 @@
-package com.lsm1998.im.imadmin.interceptor;
+package com.lsm1998.im.imadmin.middleware.interceptor;
 
 import com.lsm1998.im.common.annotations.AccessPermission;
+import com.lsm1998.im.common.model.BaseModel;
 import com.lsm1998.im.imadmin.internal.account.dto.AccountTokenDto;
+import com.lsm1998.im.imadmin.internal.role.dao.Role;
+import com.lsm1998.im.imadmin.internal.role.dao.RoleAuthority;
+import com.lsm1998.im.imadmin.internal.role.dao.mapper.RoleAuthorityMapper;
 import com.lsm1998.im.imadmin.utils.JwtUtil;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,6 +17,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static com.lsm1998.im.imadmin.internal.role.sevice.impl.RoleServiceImpl.BASE_ADMIN_ROLE_KEY;
+
 @Component
 public class AuthInterceptor implements HandlerInterceptor
 {
@@ -23,15 +32,18 @@ public class AuthInterceptor implements HandlerInterceptor
     private String secretKey;
 
     @Resource
+    private RoleAuthorityMapper roleAuthorityMapper;
+
+    @Resource
     private RedisTemplate<String, AccountTokenDto> redisTemplate;
 
-    private void setAccount(String token) throws RuntimeException
+    private AccountTokenDto getAccount(String token) throws RuntimeException
     {
         JwtUtil.ClaimsParse claimsParse = JwtUtil.parseToken(secretKey, token);
         if (!claimsParse.isVerify())
         {
             throw new RuntimeException("token校验失败");
-        }else if(claimsParse.isExpire())
+        } else if (claimsParse.isExpire())
         {
             throw new RuntimeException("token已过期");
         }
@@ -40,7 +52,22 @@ public class AuthInterceptor implements HandlerInterceptor
         {
             throw new RuntimeException("token缓存失效");
         }
-        contextHolder.setAccount(tokenDto);
+        return tokenDto;
+    }
+
+    private void checkAuthority(String authorityKey, List<Role> roles)
+    {
+        // 判断是否是超级管理员
+        if (roles.stream().anyMatch(role -> role.getRoleKey().equals(BASE_ADMIN_ROLE_KEY)))
+        {
+            return;
+        }
+        // 判断是否有权限
+        if (roleAuthorityMapper.hasAuthority(authorityKey, roles.stream().map(BaseModel::getId)
+                .collect(Collectors.toList())) == null)
+        {
+            throw new RuntimeException("权限不足");
+        }
     }
 
     @Override
@@ -57,11 +84,12 @@ public class AuthInterceptor implements HandlerInterceptor
             try
             {
                 // 设置当前用户
-                setAccount(request.getHeader("token"));
+                AccountTokenDto account = getAccount(request.getHeader("token"));
+                contextHolder.setAccount(account.getAccount());
 
                 // 校验权限
-                String uri = request.getRequestURI();
-            }catch (RuntimeException e)
+                checkAuthority(permission.value(), account.getRoles());
+            } catch (RuntimeException e)
             {
                 response.setStatus(401);
                 e.printStackTrace();

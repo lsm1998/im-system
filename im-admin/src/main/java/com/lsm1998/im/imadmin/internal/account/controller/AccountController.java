@@ -1,7 +1,7 @@
 package com.lsm1998.im.imadmin.internal.account.controller;
 
 import com.lsm1998.im.common.AjaxResponse;
-import com.lsm1998.im.imadmin.interceptor.ContextHolder;
+import com.lsm1998.im.imadmin.middleware.interceptor.ContextHolder;
 import com.lsm1998.im.imadmin.internal.account.dto.request.AccountCreateRequest;
 import com.lsm1998.im.imadmin.internal.account.dto.request.LoginOutRequest;
 import com.lsm1998.im.imadmin.internal.account.dto.request.LoginRequest;
@@ -42,7 +42,6 @@ public class AccountController
      * @return AjaxResponse
      */
     @PostMapping("loginOut")
-    @AccessPermission(url = "/account/loginOut")
     public AjaxResponse loginOut()
     {
         LoginOutRequest request = new LoginOutRequest();
@@ -57,7 +56,7 @@ public class AccountController
      * @return AjaxResponse
      */
     @GetMapping("profile")
-    @AccessPermission(url = "/account/profile")
+    @AccessPermission("account:profile")
     public AjaxResponse profile()
     {
         return AjaxResponse.success(accountService.getAccount(""));
@@ -70,7 +69,7 @@ public class AccountController
      * @return AjaxResponse
      */
     @PostMapping("create")
-    @AccessPermission(url = "/account/create")
+    @AccessPermission("account:create")
     public AjaxResponse create(@RequestBody AccountCreateRequest request)
     {
         return AjaxResponse.success(accountService.create(request));

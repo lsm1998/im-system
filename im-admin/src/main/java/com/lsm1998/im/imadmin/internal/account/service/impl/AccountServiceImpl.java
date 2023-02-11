@@ -10,6 +10,7 @@ import com.lsm1998.im.imadmin.internal.account.dto.request.LoginRequest;
 import com.lsm1998.im.imadmin.internal.account.dto.response.AccountCreateResponse;
 import com.lsm1998.im.imadmin.internal.account.dto.response.LoginResponse;
 import com.lsm1998.im.imadmin.internal.account.service.AccountService;
+import com.lsm1998.im.imadmin.internal.role.dao.mapper.RoleMapper;
 import com.lsm1998.im.imadmin.utils.JwtUtil;
 import com.lsm1998.im.imadmin.utils.PasswordEncrypt;
 import jakarta.annotation.Resource;
@@ -43,6 +44,9 @@ public class AccountServiceImpl implements AccountService
     private AccountMapper accountMapper;
 
     @Resource
+    private RoleMapper roleMapper;
+
+    @Resource
     private RedisTemplate<String, AccountTokenDto> redisTemplate;
 
     @Override
@@ -58,8 +62,11 @@ public class AccountServiceImpl implements AccountService
             throw new ServiceException(LOGIN_ERROR_CODE, LOGIN_ERROR_MESSAGE);
         }
         String token = JwtUtil.createToken(secretKey, expire, Map.of("userId", account.getId()));
+        AccountTokenDto accountTokenDto = new AccountTokenDto();
+        accountTokenDto.setAccount(account);
+        accountTokenDto.setRoles(roleMapper.findAllByAccountId(account.getId()));
         redisTemplate.opsForValue()
-                .set(String.format("%s%s", REDIS_TOKEN_KEY, token), new AccountTokenDto(), DEFAULT_EXPIRE_TIME);
+                .set(String.format("%s%s", REDIS_TOKEN_KEY, token), accountTokenDto, DEFAULT_EXPIRE_TIME);
         return LoginResponse.of(account, token, System.currentTimeMillis() + expire);
     }
 

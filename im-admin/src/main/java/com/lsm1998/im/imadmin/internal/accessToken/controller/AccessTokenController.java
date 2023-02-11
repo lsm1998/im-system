@@ -1,6 +1,7 @@
 package com.lsm1998.im.imadmin.internal.accessToken.controller;
 
 import com.lsm1998.im.common.AjaxResponse;
+import com.lsm1998.im.common.annotations.AccessPermission;
 import com.lsm1998.im.imadmin.internal.accessToken.dto.request.AccessTokenCreateReq;
 import com.lsm1998.im.imadmin.internal.accessToken.dto.request.AccessTokenListReq;
 import com.lsm1998.im.imadmin.internal.accessToken.dto.request.AccessTokenUpdateReq;
@@ -26,6 +27,7 @@ public class AccessTokenController
      * @return AjaxResponse
      */
     @PostMapping
+    @AccessPermission("accessToken:create")
     public AjaxResponse create(@RequestBody @Valid AccessTokenCreateReq request)
     {
         return AjaxResponse.success(accessTokenService.saveAccessToken(request));
@@ -38,6 +40,7 @@ public class AccessTokenController
      * @return AjaxResponse
      */
     @PutMapping
+    @AccessPermission("accessToken:update")
     public AjaxResponse update(@RequestBody @Valid AccessTokenUpdateReq request)
     {
         return AjaxResponse.success(accessTokenService.updateAccessToken(request));
@@ -50,6 +53,7 @@ public class AccessTokenController
      * @return AjaxResponse
      */
     @DeleteMapping("/{id}")
+    @AccessPermission("accessToken:delete")
     public AjaxResponse delete(@PathVariable Long id)
     {
         return AjaxResponse.success(accessTokenService.deleteAccessToken(id));
@@ -62,6 +66,7 @@ public class AccessTokenController
      * @return AjaxResponse
      */
     @GetMapping
+    @AccessPermission("accessToken:list")
     public AjaxResponse list(AccessTokenListReq request)
     {
         return AjaxResponse.success(accessTokenService.list(request));
