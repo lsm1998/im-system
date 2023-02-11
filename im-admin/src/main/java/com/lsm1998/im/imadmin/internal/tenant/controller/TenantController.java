@@ -24,7 +24,7 @@ public class TenantController
      * 创建租户
      *
      * @param request
-     * @return
+     * @return AjaxResponse
      */
     @PostMapping("create")
     @AccessPermission(url = "/tenant/create")

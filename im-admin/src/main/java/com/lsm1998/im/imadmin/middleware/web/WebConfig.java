@@ -1,12 +1,18 @@
 package com.lsm1998.im.imadmin.middleware.web;
 
+import com.lsm1998.im.imadmin.interceptor.AuthInterceptor;
+import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class CorsConfig implements WebMvcConfigurer
+public class WebConfig implements WebMvcConfigurer
 {
+    @Resource
+    private AuthInterceptor authInterceptor;
+
     @Override
     public void addCorsMappings(CorsRegistry registry)
     {
@@ -23,5 +29,11 @@ public class CorsConfig implements WebMvcConfigurer
                 .allowedHeaders("*")
                 //暴露哪些原始请求头部信息
                 .exposedHeaders("*");
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry)
+    {
+        registry.addInterceptor(authInterceptor).addPathPatterns("/**");
     }
 }

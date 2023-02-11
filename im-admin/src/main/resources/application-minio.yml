@@ -12,4 +12,4 @@ fs:
     fileHost: http://119.91.113.111:9000
     accessKey: imadmin
     secretKey: imadmin123
-    bucketName:
+    bucketName: im-admin

@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @TableName("role")
-public class RoleEntity extends BaseModel
+public class Role extends BaseModel
 {
     private Long tenantId;
 

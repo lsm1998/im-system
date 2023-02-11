@@ -1,7 +1,7 @@
 package com.lsm1998.im.imadmin.internal.role.sevice.impl;
 
 import com.lsm1998.im.common.enums.RoleType;
-import com.lsm1998.im.imadmin.internal.role.dao.RoleEntity;
+import com.lsm1998.im.imadmin.internal.role.dao.Role;
 import com.lsm1998.im.imadmin.internal.role.dao.mapper.RoleMapper;
 import com.lsm1998.im.imadmin.internal.role.sevice.RoleService;
 import jakarta.annotation.Resource;
@@ -25,7 +25,7 @@ public class RoleServiceImpl implements RoleService
     public void createBaseRole(Long tenantId)
     {
         // 超管
-        RoleEntity admin = new RoleEntity();
+        Role admin = new Role();
         admin.setSort(10);
         admin.setType(RoleType.BaseRole);
         admin.setTenantId(tenantId);
@@ -34,7 +34,7 @@ public class RoleServiceImpl implements RoleService
         roleMapper.insert(admin);
 
         // 基础用户
-        RoleEntity readonly = new RoleEntity();
+        Role readonly = new Role();
         readonly.setSort(1);
         readonly.setType(RoleType.BaseRole);
         readonly.setTenantId(tenantId);
@@ -44,7 +44,7 @@ public class RoleServiceImpl implements RoleService
     }
 
     @Override
-    public void createUseRole(RoleEntity role)
+    public void createUseRole(Role role)
     {
         role.setType(RoleType.UseRole);
         roleMapper.insert(role);

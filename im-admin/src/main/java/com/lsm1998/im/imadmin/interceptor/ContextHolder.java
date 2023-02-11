@@ -1,21 +1,19 @@
-package com.lsm1998.im.imadmin.internal.account.dto.request;
+package com.lsm1998.im.imadmin.interceptor;
 
 import com.lsm1998.im.imadmin.internal.account.dao.Account;
 import com.lsm1998.im.imadmin.internal.role.dao.Role;
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 @Data
-public class AccountCreateRequest
+public class ContextHolder
 {
-    /**
-     * account账户
-     */
+    private String remoteIp;
+
     private Account account;
 
-    /**
-     * 权限
-     */
     private List<Role> roles;
 }

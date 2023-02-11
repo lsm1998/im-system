@@ -44,6 +44,18 @@ public class AccessTokenController
     }
 
     /**
+     * 删除访问凭证
+     *
+     * @param id
+     * @return AjaxResponse
+     */
+    @DeleteMapping("/{id}")
+    public AjaxResponse delete(@PathVariable Long id)
+    {
+        return AjaxResponse.success(accessTokenService.deleteAccessToken(id));
+    }
+
+    /**
      * 查询列表
      *
      * @param request AccessTokenListReq
