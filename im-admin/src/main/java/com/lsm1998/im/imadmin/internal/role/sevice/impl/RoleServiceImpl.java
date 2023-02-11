@@ -49,4 +49,10 @@ public class RoleServiceImpl implements RoleService
         role.setType(RoleType.UseRole);
         roleMapper.insert(role);
     }
+
+//    @Override
+//    public List<RoleData> scanRole()
+//    {
+//        return null;
+//    }
 }
