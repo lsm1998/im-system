@@ -6,7 +6,7 @@ import { RouteLocationNormalized, RouteRecordRaw } from 'vue-router'
 export const useMemberCenter = defineStore('memberCenter', () => {
     const state: MemberCenter = reactive({
         // 是否开启会员中心
-        open: false,
+        open: true,
         // 布局模式
         layoutMode: 'Default',
         // 当前激活菜单

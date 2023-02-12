@@ -3,7 +3,7 @@ import { useSiteConfig } from '/@/stores/siteConfig'
 import { useMemberCenter } from '/@/stores/memberCenter'
 import { setTitle } from '/@/utils/common'
 
-const controllerUrl = '/api/index/'
+const controllerUrl = '/base/api/'
 
 export function index() {
     const siteConfig = useSiteConfig()
@@ -14,7 +14,7 @@ export function index() {
     }
 
     return createAxios({
-        url: controllerUrl + 'index',
+        url: controllerUrl + 'siteInfo',
         method: 'get',
     }).then((res) => {
         setTitle(res.data.site.siteName)

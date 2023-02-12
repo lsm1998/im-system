@@ -5,7 +5,7 @@
             <el-main class="frontend-footer-brother">
                 <el-row justify="center">
                     <el-col :span="16" :xs="24">
-                        <div v-if="memberCenter.state.open" class="login-box">
+                        <div class="login-box">
                             <div class="login-title">
                                 {{ t('user.login.' + state.form.tab) + t('user.login.reach') + siteConfig.siteName }}
                             </div>
@@ -187,7 +187,6 @@
                                 <LoginFooterMixin />
                             </el-form>
                         </div>
-                        <el-alert v-else :center="true" :title="$t('Member center disabled')" type="error" />
                     </el-col>
                 </el-row>
             </el-main>

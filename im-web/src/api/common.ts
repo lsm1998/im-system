@@ -1,12 +1,12 @@
 import createAxios from '/@/utils/axios'
-import { isAdminApp, checkFileMimetype } from '/@/utils/common'
-import { getUrl } from '/@/utils/axios'
-import { useAdminInfo } from '/@/stores/adminInfo'
-import { useUserInfo } from '/@/stores/userInfo'
-import { ElNotification, UploadRawFile } from 'element-plus'
-import { useSiteConfig } from '/@/stores/siteConfig'
-import { state as uploadExpandState, fileUpload as uploadExpand } from '/@/components/mixins/baUpload'
-import { i18n } from '../lang'
+import {isAdminApp, checkFileMimetype} from '/@/utils/common'
+import {getUrl} from '/@/utils/axios'
+import {useAdminInfo} from '/@/stores/adminInfo'
+import {useUserInfo} from '/@/stores/userInfo'
+import {ElNotification, UploadRawFile} from 'element-plus'
+import {useSiteConfig} from '/@/stores/siteConfig'
+import {state as uploadExpandState, fileUpload as uploadExpand} from '/@/components/mixins/baUpload'
+import {i18n} from '../lang'
 
 /*
  * 公共请求函数和Url定义
@@ -206,7 +206,8 @@ export function getSelectData(remoteUrl: string, q: string, params: {}) {
 }
 
 export function buildCaptchaUrl() {
-    return getUrl() + captchaUrl + '?server=1'
+    // 验证码
+    return 'https://demo.buildadmin.com' + captchaUrl + '?server=1'
 }
 
 export function getTablePk(table: string) {

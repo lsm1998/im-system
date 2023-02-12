@@ -1,13 +1,13 @@
 import axios from 'axios'
-import type { AxiosRequestConfig, AxiosPromise, Method } from 'axios'
-import { ElLoading, LoadingOptions, ElNotification } from 'element-plus'
-import { useConfig } from '/@/stores/config'
-import { isAdminApp } from '/@/utils/common'
+import type {AxiosRequestConfig, AxiosPromise, Method} from 'axios'
+import {ElLoading, LoadingOptions, ElNotification} from 'element-plus'
+import {useConfig} from '/@/stores/config'
+import {isAdminApp} from '/@/utils/common'
 import router from '/@/router/index'
-import { refreshToken } from '/@/api/common'
-import { useUserInfo } from '/@/stores/userInfo'
-import { useAdminInfo } from '/@/stores/adminInfo'
-import { i18n } from '/@/lang/index'
+import {refreshToken} from '/@/api/common'
+import {useUserInfo} from '/@/stores/userInfo'
+import {useAdminInfo} from '/@/stores/adminInfo'
+import {i18n} from '/@/lang/index'
 
 window.requests = []
 window.tokenRefreshing = false
@@ -43,8 +43,10 @@ function createAxios(axiosConfig: AxiosRequestConfig, options: Options = {}, loa
     const adminInfo = useAdminInfo()
     const userInfo = useUserInfo()
 
+    const baseURL = getUrl() ? getUrl() : "http://localhost:9870"
+
     const Axios = axios.create({
-        baseURL: getUrl(),
+        baseURL: baseURL,
         timeout: 1000 * 10,
         headers: {
             'think-lang': config.lang.defaultLang,
@@ -101,7 +103,7 @@ function createAxios(axiosConfig: AxiosRequestConfig, options: Options = {}, loa
             options.loading && closeLoading(options) // 关闭loading
 
             if (response.config.responseType == 'json') {
-                if (response.data && response.data.code !== 1) {
+                if (response.data && response.data.code !== 200) {
                     if (response.data.code == 409) {
                         if (!window.tokenRefreshing) {
                             window.tokenRefreshing = true
@@ -123,7 +125,7 @@ function createAxios(axiosConfig: AxiosRequestConfig, options: Options = {}, loa
                                     if (isAdminApp()) {
                                         adminInfo.removeToken()
                                         if (router.currentRoute.value.name != 'adminLogin') {
-                                            router.push({ name: 'adminLogin' })
+                                            router.push({name: 'adminLogin'})
                                             return Promise.reject(err)
                                         } else {
                                             response.headers.batoken = ''
@@ -134,7 +136,7 @@ function createAxios(axiosConfig: AxiosRequestConfig, options: Options = {}, loa
                                     } else {
                                         userInfo.removeToken()
                                         if (router.currentRoute.value.name != 'userLogin') {
-                                            router.push({ name: 'userLogin' })
+                                            router.push({name: 'userLogin'})
                                             return Promise.reject(err)
                                         } else {
                                             response.headers['ba-user-token'] = ''
@@ -175,9 +177,9 @@ function createAxios(axiosConfig: AxiosRequestConfig, options: Options = {}, loa
                             userInfo.removeToken()
                         }
                         if (response.data.data.routeName) {
-                            router.push({ name: response.data.data.routeName })
+                            router.push({name: response.data.data.routeName})
                         } else if (response.data.data.routePath) {
-                            router.push({ path: response.data.data.routePath })
+                            router.push({path: response.data.data.routePath})
                         }
                     }
                     // code不等于1, 页面then内的具体逻辑就不执行了
@@ -309,8 +311,8 @@ function removePending(config: AxiosRequestConfig) {
  * 生成每个请求的唯一key
  */
 function getPendingKey(config: AxiosRequestConfig) {
-    let { data } = config
-    const { url, method, params, headers } = config
+    let {data} = config
+    const {url, method, params, headers} = config
     if (typeof data === 'string') data = JSON.parse(data) // response里面返回的config.data是个字符串对象
     return [
         url,
@@ -341,6 +343,7 @@ interface LoadingInstance {
     target: any
     count: number
 }
+
 interface Options {
     // 是否开启取消重复请求, 默认为 true
     CancelDuplicateRequest?: boolean

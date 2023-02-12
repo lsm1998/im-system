@@ -10,7 +10,6 @@
                             {{ $t('index.Steve Jobs') }}
                         </div>
                         <el-button
-                            v-if="memberCenter.state.open"
                             @click="$router.push('/user')"
                             class="container-button"
                             color="#ffffff"
@@ -18,6 +17,14 @@
                         >
                             {{ $t('Member Center') }}
                         </el-button>
+                      <el-button
+                          @click="$router.push('/admin/login')"
+                          class="container-button"
+                          color="#ffffff"
+                          size="large"
+                      >
+                        管理后台登录
+                      </el-button>
                     </div>
                     <div class="main-right">
                         <img :src="indexCover" alt="" />

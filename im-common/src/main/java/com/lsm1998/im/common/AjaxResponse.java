@@ -23,6 +23,7 @@ public class AjaxResponse extends HashMap<String, Object>
         response.put("code", code);
         response.put("message", message);
         response.put("data", data);
+        response.put("time", System.currentTimeMillis() / 1000);
         return response;
     }
 

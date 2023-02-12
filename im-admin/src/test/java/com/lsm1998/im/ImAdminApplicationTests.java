@@ -1,6 +1,5 @@
 package com.lsm1998.im;
 
-import com.lsm1998.im.common.model.BaseModel;
 import com.lsm1998.im.imadmin.ImAdminApplication;
 import com.lsm1998.im.imadmin.internal.role.dao.mapper.RoleAuthorityMapper;
 import com.lsm1998.im.imadmin.internal.role.sevice.RoleService;
@@ -14,7 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.File;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @SpringBootTest(classes = ImAdminApplication.class)
 class ImAdminApplicationTests
