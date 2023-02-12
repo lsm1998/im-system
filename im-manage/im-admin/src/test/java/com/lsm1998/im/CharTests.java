@@ -1,6 +1,6 @@
 package com.lsm1998.im;
 
-import com.lsm1998.im.imadmin.utils.StringUtil;
+import com.lsm1998.im.common.utils.StringUtil;
 import org.junit.jupiter.api.Test;
 
 public class CharTests

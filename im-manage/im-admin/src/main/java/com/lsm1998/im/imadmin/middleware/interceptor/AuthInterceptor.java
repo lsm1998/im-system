@@ -2,11 +2,10 @@ package com.lsm1998.im.imadmin.middleware.interceptor;
 
 import com.lsm1998.im.common.annotations.AccessPermission;
 import com.lsm1998.im.common.model.BaseModel;
+import com.lsm1998.im.common.utils.JwtUtil;
 import com.lsm1998.im.imadmin.internal.account.dto.AccountTokenDto;
 import com.lsm1998.im.imadmin.internal.role.dao.Role;
-import com.lsm1998.im.imadmin.internal.role.dao.RoleAuthority;
 import com.lsm1998.im.imadmin.internal.role.dao.mapper.RoleAuthorityMapper;
-import com.lsm1998.im.imadmin.utils.JwtUtil;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

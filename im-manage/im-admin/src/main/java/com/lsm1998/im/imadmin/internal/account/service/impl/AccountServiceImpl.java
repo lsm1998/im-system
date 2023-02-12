@@ -1,6 +1,7 @@
 package com.lsm1998.im.imadmin.internal.account.service.impl;
 
 import com.lsm1998.im.common.exception.ServiceException;
+import com.lsm1998.im.common.utils.JwtUtil;
 import com.lsm1998.im.imadmin.internal.account.dao.Account;
 import com.lsm1998.im.imadmin.internal.account.dao.mapper.AccountMapper;
 import com.lsm1998.im.imadmin.internal.account.dto.AccountTokenDto;
@@ -11,8 +12,7 @@ import com.lsm1998.im.imadmin.internal.account.dto.response.AccountCreateRespons
 import com.lsm1998.im.imadmin.internal.account.dto.response.LoginResponse;
 import com.lsm1998.im.imadmin.internal.account.service.AccountService;
 import com.lsm1998.im.imadmin.internal.role.dao.mapper.RoleMapper;
-import com.lsm1998.im.imadmin.utils.JwtUtil;
-import com.lsm1998.im.imadmin.utils.PasswordEncrypt;
+import com.lsm1998.im.common.utils.PasswordEncrypt;
 import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;

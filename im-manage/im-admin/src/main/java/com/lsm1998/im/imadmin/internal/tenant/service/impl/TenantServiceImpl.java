@@ -5,7 +5,7 @@ import com.lsm1998.im.imadmin.internal.tenant.dao.Tenant;
 import com.lsm1998.im.imadmin.internal.tenant.dao.mapper.TenantMapper;
 import com.lsm1998.im.imadmin.internal.tenant.service.TenantService;
 import com.lsm1998.im.imadmin.middleware.rabbitmq.RabbitPublish;
-import com.lsm1998.im.imadmin.utils.StringUtil;
+import com.lsm1998.im.common.utils.StringUtil;
 import jakarta.annotation.Resource;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;

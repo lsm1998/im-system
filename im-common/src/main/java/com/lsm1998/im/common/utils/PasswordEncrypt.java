@@ -1,4 +1,4 @@
-package com.lsm1998.im.imadmin.utils;
+package com.lsm1998.im.common.utils;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;

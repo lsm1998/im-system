@@ -1,6 +1,6 @@
-package com.lsm1998.im.imadmin.utils;
+package com.lsm1998.im.common.utils;
 
-import org.springframework.util.ObjectUtils;
+import com.baomidou.mybatisplus.core.toolkit.ObjectUtils;
 
 import java.util.Random;
 
