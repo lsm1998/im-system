@@ -1,5 +1,5 @@
 {
-  "outPath": "D:\\code\\im-system\\doc",
+  "outPath": "D:\\code\\im-system\\doc\\api",
   "coverOld": true,
   "serverUrl": "http://{{server}}/",
   "strict": true
