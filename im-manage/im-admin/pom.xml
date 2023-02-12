@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.lsm1998.im</groupId>
-        <artifactId>im-system</artifactId>
+        <artifactId>im-manage</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <artifactId>im-admin</artifactId>

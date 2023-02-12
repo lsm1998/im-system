@@ -19,10 +19,8 @@
 
     <modules>
         <module>im-common</module>
-        <module>im-admin</module>
-        <module>im-comet</module>
-        <module>im-logic</module>
-        <module>im-job</module>
+        <module>im-manage</module>
+        <module>im-connect</module>
     </modules>
 
     <properties>
