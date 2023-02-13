@@ -8,6 +8,7 @@ import com.lsm1998.im.imadmin.internal.accessToken.dto.request.AccessTokenUpdate
 import com.lsm1998.im.imadmin.internal.accessToken.service.AccessTokenService;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("accessToken")
+@Slf4j
 public class AccessTokenController
 {
     @Resource
