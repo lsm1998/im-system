@@ -1,6 +1,6 @@
 package com.lsm1998.im;
 
-import com.lsm1998.im.imadmin.utils.JwtUtil;
+import com.lsm1998.im.common.utils.JwtUtil;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
