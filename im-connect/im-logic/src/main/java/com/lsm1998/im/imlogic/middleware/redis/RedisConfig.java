@@ -1,4 +1,4 @@
-package com.lsm1998.im.imjob.middleware.redis;
+package com.lsm1998.im.imlogic.middleware.redis;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
@@ -12,7 +12,7 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @Configuration
-public class RedisSerializer
+public class RedisConfig
 {
     private Jackson2JsonRedisSerializer<Object> serializer() {
         // 使用Jackson2JsonRedisSerializer来序列化和反序列化redis的value值

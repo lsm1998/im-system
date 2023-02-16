@@ -1,4 +1,4 @@
-package com.lsm1998.im.imjob.middleware.redis;
+package com.lsm1998.im.imlogic.middleware.redis;
 
 import jakarta.annotation.Resource;
 import org.springframework.data.redis.connection.BitFieldSubCommands;

@@ -1,1 +1,6 @@
+spring:
+  profiles:
+    active: redis
 
+server:
+  port: 9020
