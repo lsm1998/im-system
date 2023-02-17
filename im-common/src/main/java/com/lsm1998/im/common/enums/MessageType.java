@@ -2,7 +2,35 @@ package com.lsm1998.im.common.enums;
 
 public enum MessageType
 {
-    TEXT(0), VOICE(1), IMAGE(2), VIDEO(3), FILE(4);
+    /**
+     * ping
+     */
+    Ping(0),
+
+    /**
+     * 文本
+     */
+    TEXT(1),
+
+    /**
+     * 语音
+     */
+    VOICE(2),
+
+    /**
+     * 图片
+     */
+    IMAGE(3),
+
+    /**
+     * 视频
+     */
+    VIDEO(4),
+
+    /**
+     * 文件
+     */
+    FILE(5);
 
     private final Integer value;
 

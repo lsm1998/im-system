@@ -7,9 +7,6 @@ import com.lsm1998.im.imcomet.im.Buckets;
 import com.lsm1998.im.imcomet.im.bucket.Bucket;
 import io.grpc.stub.StreamObserver;
 import jakarta.annotation.Resource;
-import org.springframework.beans.factory.annotation.Value;
-
-import java.nio.charset.StandardCharsets;
 
 public class CometService extends CometServiceGrpc.CometServiceImplBase
 {
@@ -25,10 +22,10 @@ public class CometService extends CometServiceGrpc.CometServiceImplBase
 
             switch (request.getProtoOp())
             {
-                // 0:私聊
+                // 0:ping
                 case 0 -> bucket.getChannel(key).push(request.getProto());
-//                case 1 -> bucket.get(key).push(request.getProto());
-//                case 2 -> bucket.get(key).push(request.getProto());
+                // 1:私聊
+                case 1 -> bucket.getChannel(key).push(request.getProto());
             }
         }
         System.out.println(request);
