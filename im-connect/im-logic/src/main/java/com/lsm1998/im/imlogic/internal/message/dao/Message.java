@@ -1,6 +1,9 @@
 package com.lsm1998.im.imlogic.internal.message.dao;
 
 import com.lsm1998.im.common.enums.MessageStatus;
+import com.lsm1998.im.common.enums.MessageType;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -41,16 +44,18 @@ public class Message implements Serializable
     /**
      * 消息类型
      */
-    private Integer type;
+    private MessageType type;
 
     /**
      * 发送端状态
      */
+    @Enumerated(EnumType.ORDINAL)
     private MessageStatus formStatus;
 
     /**
      * 接收端状态
      */
+    @Enumerated(EnumType.ORDINAL)
     private MessageStatus toStatus;
 
     /**

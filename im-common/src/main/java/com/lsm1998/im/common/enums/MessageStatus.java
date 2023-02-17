@@ -15,15 +15,15 @@ public enum MessageStatus
      */
     DELETE(2);
 
-    private final Integer status;
+    private final Integer value;
 
-    MessageStatus(int status)
+    MessageStatus(Integer value)
     {
-        this.status = status;
+        this.value = value;
     }
 
-    public Integer getStatus()
+    public Integer getValue()
     {
-        return status;
+        return value;
     }
 }

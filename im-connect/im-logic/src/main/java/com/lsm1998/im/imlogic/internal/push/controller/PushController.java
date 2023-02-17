@@ -6,12 +6,14 @@ import com.lsm1998.im.imlogic.internal.push.dto.request.PushGroupRequest;
 import com.lsm1998.im.imlogic.internal.push.dto.request.PushRequest;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("im/push")
 public class PushController
 {
-    @PostMapping("push")
+    @PostMapping
     public AjaxResponse push(@RequestBody PushRequest request)
     {
         return null;
