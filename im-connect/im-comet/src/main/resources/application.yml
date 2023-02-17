@@ -1,6 +1,10 @@
 server:
   port: 8888
 
+im:
+  comet:
+    bucketNum: 32
+
 grpc:
   server:
     port: 6000

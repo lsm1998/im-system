@@ -1,4 +1,4 @@
-package com.lsm1998.im.imcomet.server;
+package com.lsm1998.im.imcomet.im;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
@@ -8,11 +8,11 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
-public class LimServer
+public class ImService
 {
     private final ServerBootstrap server;
 
-    public LimServer()
+    public ImService()
     {
         EventLoopGroup mainGroup = new NioEventLoopGroup();
         EventLoopGroup subGroup = new NioEventLoopGroup();

@@ -1,4 +1,4 @@
-package com.lsm1998.im.imcomet.protobuf;
+package com.lsm1998.im.imcomet.grpc.protobuf;
 
 import jakarta.annotation.Generated;
 
@@ -21,7 +21,7 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
  * <pre>
  * protoc -I=./ -I=../ --go_out=paths=source_relative:. --go-grpc_out=paths=source_relative:. reptilerpc/&#42;.proto
  * protoc --plugin=protoc-gen-grpc-java=source_relative:. --grpc-java_out=source_relative:. --proto_path=. comet.proto
- * D:/SoftWare/protoc --plugin=protoc-gen-grpc-java=C:&#92;Users&#92;Administrator&#92;go&#92;bin&#92;protoc-gen-grpc-java.exe  --grpc-java_out=source_relative:. --proto_path=.  comet.proto
+ * protoc --plugin=protoc-gen-grpc-java=C:&#92;Users&#92;Administrator&#92;go&#92;bin&#92;protoc-gen-grpc-java.exe  --grpc-java_out=source_relative:. --proto_path=.  comet.proto
  * </pre>
  */
 @Generated(value = "by gRPC proto compiler (version 1.9.1)", comments = "Source: comet.proto")
@@ -37,17 +37,17 @@ public final class CometServiceGrpc
     // Static method descriptors that strictly reflect the proto.
     @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
     @Deprecated // Use {@link #getPushMethod()} instead.
-    public static final io.grpc.MethodDescriptor<com.lsm1998.im.imcomet.protobuf.Comet.PushReq,
-            com.lsm1998.im.imcomet.protobuf.Comet.Empty> METHOD_PUSH = getPushMethod();
+    public static final io.grpc.MethodDescriptor<Comet.PushReq,
+            Comet.Empty> METHOD_PUSH = getPushMethod();
 
-    private static volatile io.grpc.MethodDescriptor<com.lsm1998.im.imcomet.protobuf.Comet.PushReq,
-            com.lsm1998.im.imcomet.protobuf.Comet.Empty> getPushMethod;
+    private static volatile io.grpc.MethodDescriptor<Comet.PushReq,
+            Comet.Empty> getPushMethod;
 
     @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-    public static io.grpc.MethodDescriptor<com.lsm1998.im.imcomet.protobuf.Comet.PushReq,
-            com.lsm1998.im.imcomet.protobuf.Comet.Empty> getPushMethod()
+    public static io.grpc.MethodDescriptor<Comet.PushReq,
+            Comet.Empty> getPushMethod()
     {
-        io.grpc.MethodDescriptor<com.lsm1998.im.imcomet.protobuf.Comet.PushReq, com.lsm1998.im.imcomet.protobuf.Comet.Empty> getPushMethod;
+        io.grpc.MethodDescriptor<Comet.PushReq, Comet.Empty> getPushMethod;
         if ((getPushMethod = CometServiceGrpc.getPushMethod) == null)
         {
             synchronized (CometServiceGrpc.class)
@@ -55,15 +55,15 @@ public final class CometServiceGrpc
                 if ((getPushMethod = CometServiceGrpc.getPushMethod) == null)
                 {
                     CometServiceGrpc.getPushMethod = getPushMethod =
-                            io.grpc.MethodDescriptor.<com.lsm1998.im.imcomet.protobuf.Comet.PushReq, com.lsm1998.im.imcomet.protobuf.Comet.Empty>newBuilder()
+                            io.grpc.MethodDescriptor.<Comet.PushReq, Comet.Empty>newBuilder()
                                     .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                                     .setFullMethodName(generateFullMethodName(
                                             "im.CometService", "Push"))
                                     .setSampledToLocalTracing(true)
                                     .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                            com.lsm1998.im.imcomet.protobuf.Comet.PushReq.getDefaultInstance()))
+                                            Comet.PushReq.getDefaultInstance()))
                                     .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                            com.lsm1998.im.imcomet.protobuf.Comet.Empty.getDefaultInstance()))
+                                            Comet.Empty.getDefaultInstance()))
                                     .setSchemaDescriptor(new CometServiceMethodDescriptorSupplier("Push"))
                                     .build();
                 }
@@ -111,8 +111,8 @@ public final class CometServiceGrpc
         /**
          *
          */
-        public void push(com.lsm1998.im.imcomet.protobuf.Comet.PushReq request,
-                         io.grpc.stub.StreamObserver<com.lsm1998.im.imcomet.protobuf.Comet.Empty> responseObserver)
+        public void push(Comet.PushReq request,
+                         io.grpc.stub.StreamObserver<Comet.Empty> responseObserver)
         {
             asyncUnimplementedUnaryCall(getPushMethod(), responseObserver);
         }
@@ -125,8 +125,8 @@ public final class CometServiceGrpc
                             getPushMethod(),
                             asyncUnaryCall(
                                     new MethodHandlers<
-                                            com.lsm1998.im.imcomet.protobuf.Comet.PushReq,
-                                            com.lsm1998.im.imcomet.protobuf.Comet.Empty>(
+                                            Comet.PushReq,
+                                            Comet.Empty>(
                                             this, METHODID_PUSH)))
                     .build();
         }
@@ -162,8 +162,8 @@ public final class CometServiceGrpc
         /**
          *
          */
-        public void push(com.lsm1998.im.imcomet.protobuf.Comet.PushReq request,
-                         io.grpc.stub.StreamObserver<com.lsm1998.im.imcomet.protobuf.Comet.Empty> responseObserver)
+        public void push(Comet.PushReq request,
+                         io.grpc.stub.StreamObserver<Comet.Empty> responseObserver)
         {
             asyncUnaryCall(
                     getChannel().newCall(getPushMethod(), getCallOptions()), request, responseObserver);
@@ -200,7 +200,7 @@ public final class CometServiceGrpc
         /**
          *
          */
-        public com.lsm1998.im.imcomet.protobuf.Comet.Empty push(com.lsm1998.im.imcomet.protobuf.Comet.PushReq request)
+        public Comet.Empty push(Comet.PushReq request)
         {
             return blockingUnaryCall(
                     getChannel(), getPushMethod(), getCallOptions(), request);
@@ -237,8 +237,8 @@ public final class CometServiceGrpc
         /**
          *
          */
-        public com.google.common.util.concurrent.ListenableFuture<com.lsm1998.im.imcomet.protobuf.Comet.Empty> push(
-                com.lsm1998.im.imcomet.protobuf.Comet.PushReq request)
+        public com.google.common.util.concurrent.ListenableFuture<Comet.Empty> push(
+                Comet.PushReq request)
         {
             return futureUnaryCall(
                     getChannel().newCall(getPushMethod(), getCallOptions()), request);
@@ -269,8 +269,8 @@ public final class CometServiceGrpc
             switch (methodId)
             {
                 case METHODID_PUSH:
-                    serviceImpl.push((com.lsm1998.im.imcomet.protobuf.Comet.PushReq) request,
-                            (io.grpc.stub.StreamObserver<com.lsm1998.im.imcomet.protobuf.Comet.Empty>) responseObserver);
+                    serviceImpl.push((Comet.PushReq) request,
+                            (io.grpc.stub.StreamObserver<Comet.Empty>) responseObserver);
                     break;
                 default:
                     throw new AssertionError();
@@ -300,7 +300,7 @@ public final class CometServiceGrpc
         @Override
         public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor()
         {
-            return com.lsm1998.im.imcomet.protobuf.Comet.getDescriptor();
+            return Comet.getDescriptor();
         }
 
         @Override

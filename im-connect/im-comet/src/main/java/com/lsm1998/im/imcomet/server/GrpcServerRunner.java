@@ -1,6 +1,6 @@
 package com.lsm1998.im.imcomet.server;
 
-import com.lsm1998.im.imcomet.service.CometService;
+import com.lsm1998.im.imcomet.grpc.CometService;
 import io.grpc.Grpc;
 import io.grpc.InsecureServerCredentials;
 import io.grpc.Server;
@@ -11,17 +11,17 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 /**
- * java gRPC 服务端
- *
+ * Java gRPC 服务端
+ * <p>
  * <a href="https://github.com/grpc/grpc-java">doc</a>
  */
 @Component
 @Slf4j
-public class GrpcServer implements ApplicationRunner
+public class GrpcServerRunner implements ApplicationRunner
 {
     private Server server;
 
-    @Value("${grpc.port:8866}")
+    @Value("${grpc.server.port:8866}")
     private int port;
 
     @Override
