@@ -1,0 +1,9 @@
+server:
+  port: 8888
+
+grpc:
+  server:
+    port: 6000
+spring:
+  application:
+    name: im-comet-grpc-server

@@ -22,8 +22,8 @@ public class LimServer
                 channel(NioServerSocketChannel.class).
                 option(ChannelOption.SO_BACKLOG, 10240).
                 option(ChannelOption.SO_REUSEADDR, true).
-                option(ChannelOption.TCP_NODELAY, true).
-                option(ChannelOption.SO_KEEPALIVE, true).
+                //option(ChannelOption.TCP_NODELAY, true).
+                //option(ChannelOption.SO_KEEPALIVE, true).
                 childHandler(new ChannelInitializer<>()
                 {
                     @Override

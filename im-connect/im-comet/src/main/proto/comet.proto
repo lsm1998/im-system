@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package im;
+
+option java_package = "com.lsm1998.im.imcomet.protobuf";
+
+message PushReq {
+  repeated string keys = 1;
+  int32 protoOp = 3;
+  Proto proto = 2;
+}
+
+message Empty {
+}
+
+/*
+ * v1.0.0
+ * protocol
+ */
+message Proto {
+  int32 ver = 1;
+  int32 op = 2;
+  int32 seq = 3;
+  bytes body = 4;
+}
+
+// protoc --java_out=. --proto_path=.  comet.proto
+// protoc --plugin=protoc-gen-grpc-java=C:\Users\Administrator\go\bin\protoc-gen-grpc-java.exe  --grpc-java_out=source_relative:. --proto_path=.  comet.proto
+service CometService {
+  rpc Push(PushReq) returns(Empty);
+}
