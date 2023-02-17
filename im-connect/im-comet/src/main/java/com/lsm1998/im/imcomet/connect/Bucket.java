@@ -11,23 +11,19 @@ public class Bucket
 
     private final Map<String, Channel> chs;
 
+    private final Map<String, Room> rooms;
+
+    private int routinesNum;
+
     public Bucket()
     {
         this.rwLock = new ReentrantReadWriteLock();
         this.chs = new ConcurrentHashMap<>();
+        this.rooms = new ConcurrentHashMap<>();
     }
 
     public Channel get(String key)
     {
         return chs.get(key);
     }
-    // c     *conf.Bucket
-    //	cLock sync.RWMutex        // protect the channels for chs
-    //	chs   map[string]*Channel // map sub key to a channel
-    //	// room
-    //	rooms       map[string]*Room // bucket room channels
-    //	routines    []chan *pb.BroadcastRoomReq
-    //	routinesNum uint64
-    //
-    //	ipCnts map[string]int32
 }
