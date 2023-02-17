@@ -1,4 +1,4 @@
-package com.lsm1998.im.imlogic.internal.message.dto.request;
+package com.lsm1998.im.imlogic.internal.push.dto.request;
 
 import lombok.Data;
 
