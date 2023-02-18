@@ -16,45 +16,15 @@
         <java.version>17</java.version>
     </properties>
 
-    <!--    <dependencyManagement>-->
-    <!--        <dependencies>-->
-    <!--            <dependency>-->
-    <!--                <groupId>org.springframework.boot</groupId>-->
-    <!--                <artifactId>spring-boot-starter</artifactId>-->
-    <!--                <version>2.7.5</version>-->
-    <!--            </dependency>-->
-
-    <!--            <dependency>-->
-    <!--                <groupId>org.springframework.boot</groupId>-->
-    <!--                <artifactId>spring-boot-devtools</artifactId>-->
-    <!--                <version>2.7.5</version>-->
-    <!--            </dependency>-->
-
-    <!--            <dependency>-->
-    <!--                <groupId>org.springframework.boot</groupId>-->
-    <!--                <artifactId>spring-boot-starter-test</artifactId>-->
-    <!--                <version>2.7.5</version>-->
-    <!--            </dependency>-->
-
-    <!--            <dependency>-->
-    <!--                <groupId>org.projectlombok</groupId>-->
-    <!--                <artifactId>lombok</artifactId>-->
-    <!--                <version>1.18.26</version>-->
-    <!--            </dependency>-->
-
-    <!--            <dependency>-->
-    <!--                <groupId>org.springframework.boot</groupId>-->
-    <!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
-    <!--                <version>2.7.5</version>-->
-    <!--            </dependency>-->
-    <!--        </dependencies>-->
-    <!--    </dependencyManagement>-->
-
     <dependencies>
         <dependency>
             <groupId>com.lsm1998.im</groupId>
             <artifactId>im-common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.lsm1998.im</groupId>
+            <artifactId>im-protobuf</artifactId>
         </dependency>
 
         <dependency>
