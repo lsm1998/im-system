@@ -24,6 +24,9 @@ message Proto {
   bytes body = 4;
 }
 
+
+// protoc --java_out=. --proto_path=.  comet.proto
+// protoc --plugin=protoc-gen-grpc-java=C:\Users\Administrator\go\bin\protoc-gen-grpc-java.exe --grpc-java_out=source_relative:. --proto_path=. comet.proto
 service ImCometService {
   rpc Push(PushReq) returns(Empty);
 }

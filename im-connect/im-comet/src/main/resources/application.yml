@@ -4,6 +4,9 @@ server:
 im:
   comet:
     bucketNum: 32
+  server:
+    host: 0.0.0.0
+    port: 8888
 
 grpc:
   server:
@@ -11,3 +14,15 @@ grpc:
 spring:
   application:
     name: im-comet-grpc-server
+
+
+task:
+  pool:
+    # 核心线程数
+    corePoolSize: 20
+    # 最大线程数
+    maxPoolSize: 200
+    # 活跃时间
+    keepAliveSeconds: 300
+    # 队列容量
+    queueCapacity: 50

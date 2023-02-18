@@ -1,13 +1,13 @@
 package com.lsm1998.im.imcomet.grpc;
 
-import com.lsm1998.im.imcomet.grpc.protobuf.Comet;
-import com.lsm1998.im.imcomet.grpc.protobuf.CometServiceGrpc;
 import com.lsm1998.im.imcomet.im.Buckets;
 import com.lsm1998.im.imcomet.im.bucket.Bucket;
+import com.lsm1998.im.protobuf.comet.Comet;
+import com.lsm1998.im.protobuf.comet.ImCometServiceGrpc;
 import io.grpc.stub.StreamObserver;
 import jakarta.annotation.Resource;
 
-public class CometService extends CometServiceGrpc.CometServiceImplBase
+public class CometService extends ImCometServiceGrpc.ImCometServiceImplBase
 {
     @Resource
     private Buckets buckets;

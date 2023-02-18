@@ -1,6 +1,6 @@
 package com.lsm1998.im.imcomet.im.bucket;
 
-import com.lsm1998.im.imcomet.grpc.protobuf.Comet;
+import com.lsm1998.im.protobuf.comet.Comet;
 import lombok.Data;
 
 @Data

@@ -1,7 +1,7 @@
 package com.lsm1998.im.imjob.grpc;
 
-import com.lsm1998.im.imjob.grpc.protobuf.Comet;
-import com.lsm1998.im.imjob.grpc.protobuf.CometServiceGrpc;
+import com.lsm1998.im.protobuf.comet.Comet;
+import com.lsm1998.im.protobuf.comet.ImCometServiceGrpc;
 import io.grpc.CallCredentials;
 import io.grpc.Grpc;
 import io.grpc.InsecureChannelCredentials;
@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 public class CometClient
 {
     private final ManagedChannel channel;
-    private final CometServiceGrpc.CometServiceBlockingStub blockingStub;
+    private final ImCometServiceGrpc.ImCometServiceBlockingStub blockingStub;
     private final CallCredentials callCredentials;
 
     public CometClient(String host, int port, CallCredentials callCredentials)
@@ -25,7 +25,7 @@ public class CometClient
     {
         this.channel = channel;
         this.callCredentials = callCredentials;
-        this.blockingStub = CometServiceGrpc.newBlockingStub(channel).withCallCredentials(callCredentials);
+        this.blockingStub = ImCometServiceGrpc.newBlockingStub(channel).withCallCredentials(callCredentials);
     }
 
     public void shutdown() throws InterruptedException
