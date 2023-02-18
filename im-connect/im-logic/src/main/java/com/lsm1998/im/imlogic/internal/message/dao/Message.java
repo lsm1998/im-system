@@ -6,6 +6,7 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
@@ -24,11 +25,13 @@ public class Message implements Serializable
     /**
      * 发送者id
      */
+    @Indexed
     private Long fromId;
 
     /**
      * 接收者id
      */
+    @Indexed
     private Long toId;
 
     /**

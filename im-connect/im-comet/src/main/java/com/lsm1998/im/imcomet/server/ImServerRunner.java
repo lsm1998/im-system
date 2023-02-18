@@ -14,7 +14,7 @@ public class ImServerRunner implements ApplicationRunner
     @Override
     public void run(ApplicationArguments args) throws Exception
     {
-        ImService imService = new ImService();
-        imService.bind(8080);
+        ImService imService = new ImService(8080);
+        imService.start();
     }
 }

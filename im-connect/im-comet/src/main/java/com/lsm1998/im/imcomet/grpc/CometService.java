@@ -1,6 +1,5 @@
 package com.lsm1998.im.imcomet.grpc;
 
-import com.lsm1998.im.common.utils.CityHashUtil;
 import com.lsm1998.im.imcomet.grpc.protobuf.Comet;
 import com.lsm1998.im.imcomet.grpc.protobuf.CometServiceGrpc;
 import com.lsm1998.im.imcomet.im.Buckets;

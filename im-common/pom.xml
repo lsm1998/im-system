@@ -11,9 +11,14 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>im-common</name>
     <description>im-common</description>
+
     <properties>
         <java.version>17</java.version>
+        <protoc.version>3.21.7</protoc.version>
+        <grpc.version>1.53.0-SNAPSHOT</grpc.version>
+        <os.detected.classifier>linux-x86_64</os.detected.classifier>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.baomidou</groupId>
@@ -26,6 +31,35 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-extension</artifactId>
             <version>3.5.3.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-stub</artifactId>
+            <version>1.53.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-protobuf</artifactId>
+            <version>1.53.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-api</artifactId>
+            <version>1.53.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-servlet-jakarta</artifactId>
+            <version>1.53.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
         </dependency>
 
         <dependency>
@@ -67,6 +101,14 @@
     </dependencies>
 
     <build>
+        <extensions>
+            <extension>
+                <groupId>kr.motd.maven</groupId>
+                <artifactId>os-maven-plugin</artifactId>
+                <version>1.5.0.Final</version>
+            </extension>
+        </extensions>
+
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -75,6 +117,48 @@
                     <skip>true</skip>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.xolstice.maven.plugins</groupId>
+                <artifactId>protobuf-maven-plugin</artifactId>
+                <version>0.5.1</version>
+                <configuration>
+                    <protocArtifact>com.google.protobuf:protoc:3.5.1-1:exe:${os.detected.classifier}</protocArtifact>
+                    <pluginId>grpc-java</pluginId>
+                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.17.1:exe:${os.detected.classifier}</pluginArtifact>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>compile-custom</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+<!--            <plugin>-->
+<!--                <groupId>org.xolstice.maven.plugins</groupId>-->
+<!--                <artifactId>protobuf-maven-plugin</artifactId>-->
+<!--                <version>0.5.1</version>-->
+<!--                <configuration>-->
+<!--                    <protocArtifact>-->
+<!--                        com.google.protobuf:protoc:${protoc.version}:exe:${os.detected.classifier}-->
+<!--                    </protocArtifact>-->
+<!--                    <pluginId>grpc-java</pluginId>-->
+<!--                    <pluginArtifact>-->
+<!--                        io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os.detected.classifier}-->
+<!--                    </pluginArtifact>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--                            <goal>compile</goal>-->
+<!--                            <goal>compile-custom</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 

@@ -2,4 +2,4 @@
 spring:
   data:
     mongodb:
-      uri: mongodb://admin:mongoyyds123@120.79.132.241:27017/emos?serverSelectionTimeoutMS=5000&connectTimeoutMS=10000&authSource=admin&authMechanism=SCRAM-SHA-256
+      uri: mongodb://admin:mongoyyds123@120.79.132.241:27017/im?serverSelectionTimeoutMS=5000&connectTimeoutMS=10000&authSource=admin&authMechanism=SCRAM-SHA-256
