@@ -22,6 +22,7 @@
         <module>im-manage</module>
         <module>im-connect</module>
         <module>im-protobuf</module>
+        <module>im-report</module>
     </modules>
 
     <properties>

@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    active: mysql
+
+# MySQL connection properties
+  mysql.url=jdbc:mysql://localhost:3306/mydb
+  mysql.username=myuser
+  mysql.password=mypassword
+  
+  # ClickHouse connection properties
+  clickhouse.url=jdbc:clickhouse://localhost:8123/mydb
+  clickhouse.username=myuser
+  clickhouse.password=mypassword
+
