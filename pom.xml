@@ -22,7 +22,9 @@
         <module>im-manage</module>
         <module>im-connect</module>
         <module>im-protobuf</module>
-        <module>im-report</module>
+        <module>im-warehouse</module>
+        <module>im-warehouse/im-synchro</module>
+        <module>im-warehouse/im-report</module>
     </modules>
 
     <properties>
