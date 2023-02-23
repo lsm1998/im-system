@@ -1,4 +1,4 @@
-package com.lsm1998.im.imcomet.server;
+package com.lsm1998.im.imcomet.runner;
 
 import com.lsm1998.im.imcomet.im.ImService;
 import jakarta.annotation.Resource;
@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.Executor;
