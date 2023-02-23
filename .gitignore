@@ -9,3 +9,5 @@
 */node_modules/*
 
 /im-manage/im-admin/target/classes/*
+
+*.class
