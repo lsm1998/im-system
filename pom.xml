@@ -22,9 +22,7 @@
         <module>im-manage</module>
         <module>im-connect</module>
         <module>im-protobuf</module>
-        <module>im-warehouse</module>
-        <module>im-warehouse/im-synchro</module>
-        <module>im-warehouse/im-report</module>
+        <module>im-report</module>
     </modules>
 
     <properties>
@@ -91,6 +89,12 @@
                 <artifactId>modelmapper</artifactId>
                 <version>3.1.1</version>
             </dependency>
+
+<!--            <dependency>-->
+<!--                <groupId>com.clickhouse</groupId>-->
+<!--                <artifactId>clickhouse-jdbc</artifactId>-->
+<!--                <version>0.4.0</version>-->
+<!--            </dependency>-->
         </dependencies>
     </dependencyManagement>
 
