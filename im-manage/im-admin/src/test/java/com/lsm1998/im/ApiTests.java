@@ -12,7 +12,7 @@ public class ApiTests
         ApiConfig config = new ApiConfig();
         config.setAuthor("lsm1998");
         config.setStrict(true);
-        config.setOutPath("D:\\code\\im-system\\doc");
+        // config.setOutPath("D:\\code\\im-system\\doc");
         config.setServerUrl("http://127.0.0.1:9870/");
         config.setCoverOld(true);
         ApiDocBuilder.buildApiDoc(config);
