@@ -2,4 +2,12 @@
 spring:
   data:
     mongodb:
-      uri: mongodb://admin:mongoyyds123@120.79.132.241:27017/im?serverSelectionTimeoutMS=5000&connectTimeoutMS=10000&authSource=admin&authMechanism=SCRAM-SHA-256
+      host: localhost
+      port: 27017
+      database: im
+#      uri: mongodb://admin:mongoyyds123@120.79.132.241:27017/im?serverSelectionTimeoutMS=5000&connectTimeoutMS=10000&authSource=admin&authMechanism=SCRAM-SHA-256
+#      replica-set-name: rs0
+#      database: im
+#      authentication-database: admin
+#      username:
+#      password:
