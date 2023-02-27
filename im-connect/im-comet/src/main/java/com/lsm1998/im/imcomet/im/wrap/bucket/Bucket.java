@@ -1,13 +1,11 @@
-package com.lsm1998.im.imcomet.im.bucket;
+package com.lsm1998.im.imcomet.im.wrap.bucket;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class Bucket
 {
-    private final Map<String, Channel> chs;
+    private final Map<String, NetChannel> chs;
 
     private final Map<String, Room> rooms;
 
@@ -20,7 +18,7 @@ public class Bucket
         this.rooms = new ConcurrentHashMap<>();
     }
 
-    public Channel getChannel(String key)
+    public NetChannel getChannel(String key)
     {
         return chs.get(key);
     }

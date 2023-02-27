@@ -1,5 +1,7 @@
 package com.lsm1998.im.imcomet.im;
 
+import com.lsm1998.im.imcomet.im.handler.DiscardServerHandler;
+import com.lsm1998.im.imcomet.im.handler.HeartbeatHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -28,7 +30,7 @@ public class ImService
 
     public void start() throws InterruptedException
     {
-        EventLoopGroup mainGroup = new NioEventLoopGroup();
+        EventLoopGroup mainGroup = new NioEventLoopGroup(1);
         EventLoopGroup subGroup = new NioEventLoopGroup();
         try
         {
@@ -45,15 +47,17 @@ public class ImService
                         {
                             ChannelPipeline pipeline = channel.pipeline();
                             // HTTP编解码器
-                            pipeline.addLast(new HttpServerCodec());
+                            pipeline.addLast("http-codec",new HttpServerCodec());
                             //  支持大数据流
-                            pipeline.addLast(new ChunkedWriteHandler());
+                            pipeline.addLast("http-chunked",new ChunkedWriteHandler());
                             // 聚合器，使用websocket会用到
-                            pipeline.addLast(new HttpObjectAggregator(8 * 1024));
+                            pipeline.addLast("aggregator",new HttpObjectAggregator(8 * 1024));
                             // 自定义处理器
                             pipeline.addLast(new WebSocketServerProtocolHandler("/ws"));
                             // 自定义处理器
-                            // pipeline.addLast(new ImHandler());
+                            pipeline.addLast(new DiscardServerHandler());
+                            // 心跳
+                            pipeline.addFirst(new HeartbeatHandler());
                         }
                     });
             ChannelFuture future = server.bind(this.host, this.port).sync();

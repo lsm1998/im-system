@@ -1,7 +1,7 @@
 package com.lsm1998.im.imcomet.grpc;
 
-import com.lsm1998.im.imcomet.im.Buckets;
-import com.lsm1998.im.imcomet.im.bucket.Bucket;
+import com.lsm1998.im.imcomet.im.wrap.Buckets;
+import com.lsm1998.im.imcomet.im.wrap.bucket.Bucket;
 import com.lsm1998.im.protobuf.comet.Comet;
 import com.lsm1998.im.protobuf.comet.ImCometServiceGrpc;
 import io.grpc.stub.StreamObserver;

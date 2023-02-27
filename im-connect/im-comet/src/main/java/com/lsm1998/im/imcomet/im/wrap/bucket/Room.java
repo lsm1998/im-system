@@ -1,4 +1,4 @@
-package com.lsm1998.im.imcomet.im.bucket;
+package com.lsm1998.im.imcomet.im.wrap.bucket;
 
 import com.lsm1998.im.protobuf.comet.Comet;
 import lombok.Getter;
@@ -13,7 +13,7 @@ public class Room
 
     private final ReadWriteLock rwLock;
 
-    private Channel next;
+    private NetChannel next;
 
     private boolean drop;
 
@@ -26,7 +26,7 @@ public class Room
         this.rwLock = new ReentrantReadWriteLock();
     }
 
-    public void put(Channel channel)
+    public void put(NetChannel netChannel)
     {
         if (this.drop)
             throw new RuntimeException("房间已经关闭");
@@ -35,11 +35,11 @@ public class Room
             rwLock.writeLock().lock();
             if (next != null)
             {
-                next.setPrev(channel);
+                next.setPrev(netChannel);
             }
-            channel.setNext(next);
-            channel.setPrev(null);
-            next = channel;
+            netChannel.setNext(next);
+            netChannel.setPrev(null);
+            next = netChannel;
             this.online++;
         } finally
         {
@@ -47,24 +47,24 @@ public class Room
         }
     }
 
-    public void delete(Channel channel)
+    public void delete(NetChannel netChannel)
     {
         try
         {
             rwLock.writeLock().lock();
-            if (channel.getNext() != null)
+            if (netChannel.getNext() != null)
             {
-                channel.getNext().setPrev(channel.getPrev());
+                netChannel.getNext().setPrev(netChannel.getPrev());
             }
-            if (channel.getPrev() != null)
+            if (netChannel.getPrev() != null)
             {
-                channel.getPrev().setNext(channel.getNext());
+                netChannel.getPrev().setNext(netChannel.getNext());
             } else
             {
-                next = channel.getNext();
+                next = netChannel.getNext();
             }
-            channel.setNext(null);
-            channel.setPrev(null);
+            netChannel.setNext(null);
+            netChannel.setPrev(null);
             if (--this.online == 0)
                 this.drop = true;
         } finally
@@ -78,7 +78,7 @@ public class Room
         try
         {
             rwLock.readLock().lock();
-            for (Channel ch = next; ch != null; ch = ch.getNext())
+            for (NetChannel ch = next; ch != null; ch = ch.getNext())
             {
                 ch.push(proto);
             }
@@ -93,7 +93,7 @@ public class Room
         try
         {
             rwLock.readLock().lock();
-            for (Channel ch = next; ch != null; ch = ch.getNext())
+            for (NetChannel ch = next; ch != null; ch = ch.getNext())
             {
                 ch.close();
             }
