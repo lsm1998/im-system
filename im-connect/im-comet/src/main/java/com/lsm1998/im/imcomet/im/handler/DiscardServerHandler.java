@@ -3,7 +3,9 @@ package com.lsm1998.im.imcomet.im.handler;
 import com.lsm1998.im.imcomet.im.protoc.Message;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class DiscardServerHandler extends SimpleChannelInboundHandler<Message>
 {
     /**
@@ -15,6 +17,7 @@ public class DiscardServerHandler extends SimpleChannelInboundHandler<Message>
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception
     {
+        log.info("上线");
     }
 
     /**
@@ -27,8 +30,9 @@ public class DiscardServerHandler extends SimpleChannelInboundHandler<Message>
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Message msg) throws Exception
     {
-        System.out.println(msg);
+        log.info("收到消息 {}", msg);
     }
+
     /**
      * 下线
      *
@@ -38,6 +42,6 @@ public class DiscardServerHandler extends SimpleChannelInboundHandler<Message>
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception
     {
-        super.channelInactive(ctx);
+        log.info("下线");
     }
 }
