@@ -1,4 +1,4 @@
-package com.lsm1998.im.webcommon.model;
+package com.lsm1998.im.common.model;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
