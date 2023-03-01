@@ -1,4 +1,4 @@
-package com.lsm1998.im.common.model;
+package com.lsm1998.im.webcommon.model;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.Data;

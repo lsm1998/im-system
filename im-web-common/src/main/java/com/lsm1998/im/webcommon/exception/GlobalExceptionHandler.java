@@ -1,4 +1,4 @@
-package com.lsm1998.im.imadmin.exception;
+package com.lsm1998.im.webcommon.exception;
 
 import com.lsm1998.im.common.AjaxResponse;
 import com.lsm1998.im.common.exception.AccessDeniedException;

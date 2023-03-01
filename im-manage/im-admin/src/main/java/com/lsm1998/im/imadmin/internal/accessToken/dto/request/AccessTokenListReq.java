@@ -1,6 +1,6 @@
 package com.lsm1998.im.imadmin.internal.accessToken.dto.request;
 
-import com.lsm1998.im.common.model.BaseListRequest;
+import com.lsm1998.im.webcommon.model.BaseListRequest;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

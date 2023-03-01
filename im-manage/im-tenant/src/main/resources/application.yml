@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    active: druid,redis
+
+server:
+  port: 9880
+
+jwt:
+  secretKey: uGlrwikdKkdasijwinxzcnmpLKkkpoplmiiKsdasd
+  expire: 1000 * 60 * 24 * 2

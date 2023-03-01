@@ -1,0 +1,7 @@
+# 数据源配置
+spring:
+  data:
+    redis:
+      database: 0
+      password: redisyyds123
+      host: 120.79.132.241

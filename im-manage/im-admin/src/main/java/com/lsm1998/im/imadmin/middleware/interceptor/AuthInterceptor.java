@@ -1,7 +1,7 @@
 package com.lsm1998.im.imadmin.middleware.interceptor;
 
 import com.lsm1998.im.common.annotations.AccessPermission;
-import com.lsm1998.im.common.model.BaseModel;
+import com.lsm1998.im.webcommon.model.BaseModel;
 import com.lsm1998.im.common.utils.JwtUtil;
 import com.lsm1998.im.imadmin.internal.account.dto.AccountTokenDto;
 import com.lsm1998.im.imadmin.internal.role.dao.Role;

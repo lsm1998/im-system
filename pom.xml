@@ -19,6 +19,7 @@
 
     <modules>
         <module>im-common</module>
+        <module>im-web-common</module>
         <module>im-manage</module>
         <module>im-connect</module>
         <module>im-protobuf</module>
@@ -43,6 +44,12 @@
             <dependency>
                 <groupId>com.lsm1998.im</groupId>
                 <artifactId>im-common</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.lsm1998.im</groupId>
+                <artifactId>im-web-common</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
 
@@ -88,6 +95,37 @@
                 <groupId>org.modelmapper</groupId>
                 <artifactId>modelmapper</artifactId>
                 <version>3.1.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>3.5.3.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>3.5.3.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>1.2.15</version>
+            </dependency>
+
+            <!--minio-->
+            <dependency>
+                <groupId>io.minio</groupId>
+                <artifactId>minio</artifactId>
+                <version>8.0.3</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.shalousun</groupId>
+                <artifactId>smart-doc</artifactId>
+                <version>2.6.4</version>
             </dependency>
 
 <!--            <dependency>-->
