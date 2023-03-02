@@ -1,13 +1,12 @@
 package com.lsm1998.im.tenant.internal.base.controller;
 
 import com.lsm1998.im.common.AjaxResponse;
-import com.lsm1998.im.tenant.internal.base.dto.response.MenuData;
+import com.lsm1998.im.common.annotations.AccessPermission;
+import com.lsm1998.im.tenant.internal.base.service.MenuService;
+import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping("/base")
@@ -100,13 +99,14 @@ public class MenuController
     //        ]
     //    }
     //}
+
+    @Resource
+    private MenuService menuService;
+
     @GetMapping("/menu")
+    @AccessPermission
     public AjaxResponse getMenu()
     {
-        List<MenuData> menus = new ArrayList<>();
-        MenuData menuData = new MenuData();
-        menuData.setPid(0L);
-        menuData.setType("menu_dir");
-        return AjaxResponse.success();
+        return AjaxResponse.success(menuService.menuTreeList());
     }
 }
