@@ -1,5 +1,6 @@
 package com.lsm1998.im.tenant.internal.base.dto.response;
 
+import com.lsm1998.im.tenant.internal.base.dao.Menu;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -8,6 +9,8 @@ import java.util.List;
 @Data
 public class MenuData implements Serializable
 {
+    private Long id;
+
     /**
      * 父级id
      */
@@ -62,4 +65,22 @@ public class MenuData implements Serializable
      * 子菜单
      */
     private List<MenuData> children;
+
+    public MenuData()
+    {
+    }
+
+    public MenuData(Menu menu)
+    {
+        this.pid = menu.getPid();
+        this.type = menu.getType();
+        this.title = menu.getTitle();
+        this.name = menu.getName();
+        this.path = menu.getPath();
+        this.icon = menu.getIcon();
+        this.menuType = menu.getMenuType();
+        this.url = menu.getUrl();
+        this.component = menu.getComponent();
+        this.extend = menu.getExtend();
+    }
 }

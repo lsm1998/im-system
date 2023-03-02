@@ -23,7 +23,9 @@ public class CaptchaController
     @Resource
     private RedisTemplate<String, String> redisTemplate;
 
-    @RequestMapping(value = "captcha" , produces = "image/jpeg")
+    private final static String CAPTCHA_ID = "cache:captchaId";
+
+    @RequestMapping(value = "captcha", produces = "image/jpeg")
     public byte[] getCaptchaCode(@RequestParam String captchaId) throws IOException
     {
         // 生成文字验证码
@@ -32,7 +34,7 @@ public class CaptchaController
         String code = capText.substring(capText.lastIndexOf("@") + 1);
         BufferedImage image = captchaProducer.createImage(capStr);
         // 保存到缓存
-        redisTemplate.opsForValue().set(captchaId, code, 5, TimeUnit.MINUTES);
+        redisTemplate.opsForValue().set(String.format("%s:%s", CAPTCHA_ID, captchaId), code, 5, TimeUnit.MINUTES);
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         // 输出图片流
         ImageIO.write(image, "jpg", outputStream);

@@ -36,6 +36,11 @@ public class Menu extends BaseModel
     private String path;
 
     /**
+     * 排序
+     */
+    private Integer sort;
+
+    /**
      * 图标
      */
     private String icon;
