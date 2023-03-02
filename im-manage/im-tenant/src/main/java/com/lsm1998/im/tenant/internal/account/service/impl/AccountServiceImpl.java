@@ -3,11 +3,12 @@ package com.lsm1998.im.tenant.internal.account.service.impl;
 import com.lsm1998.im.common.exception.ServiceException;
 import com.lsm1998.im.common.utils.JwtUtil;
 import com.lsm1998.im.common.utils.PasswordEncrypt;
-import com.lsm1998.im.tenant.internal.account.dao.TenantAccount;
-import com.lsm1998.im.tenant.internal.account.dao.mapper.TenantAccountMapper;
+import com.lsm1998.im.tenant.internal.account.dao.Account;
+import com.lsm1998.im.tenant.internal.account.dao.mapper.AccountMapper;
 import com.lsm1998.im.tenant.internal.account.dto.request.LoginRequest;
 import com.lsm1998.im.tenant.internal.account.dto.response.LoginResponse;
-import com.lsm1998.im.tenant.internal.account.service.TenantAccountService;
+import com.lsm1998.im.tenant.internal.account.dto.response.ProfileResponse;
+import com.lsm1998.im.tenant.internal.account.service.AccountService;
 import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ import java.util.Map;
 import static com.lsm1998.im.common.Code.*;
 
 @Service
-public class TenantAccountServiceImpl implements TenantAccountService
+public class AccountServiceImpl implements AccountService
 {
     @Value("${jwt.secretKey}")
     private String secretKey;
@@ -27,12 +28,12 @@ public class TenantAccountServiceImpl implements TenantAccountService
     private Long expire;
 
     @Resource
-    private TenantAccountMapper tenantAccountMapper;
+    private AccountMapper accountMapper;
 
     @Override
     public LoginResponse login(LoginRequest request)
     {
-        TenantAccount account = tenantAccountMapper.findByUsername(request.getAppid(), request.getUsername());
+        Account account = accountMapper.findByUsername(request.getAppid(), request.getUsername());
         if (account == null)
         {
             throw new ServiceException(USER_NOT_EXIST_ERROR_CODE, USER_NOT_EXIST_ERROR_MESSAGE);
@@ -43,13 +44,21 @@ public class TenantAccountServiceImpl implements TenantAccountService
         }
         account.setLastLoginIp(request.getRemoteIp());
         account.setLastLoginTime(new Date());
-        tenantAccountMapper.updateById(account);
-        String token = JwtUtil.createToken(secretKey, expire, Map.of("userId", account.getId()));
+        accountMapper.updateById(account);
+        String token = JwtUtil.createToken(secretKey, expire, Map.of(
+                "userId", account.getId(), "appid", account.getAppid()));
         LoginResponse result = new LoginResponse();
         result.setUserInfo(account);
         result.setToken(token);
         result.setRefreshToken(token);
         result.setExpire(System.currentTimeMillis() + expire);
         return result;
+    }
+
+    @Override
+    public ProfileResponse profile(Long userId)
+    {
+
+        return null;
     }
 }

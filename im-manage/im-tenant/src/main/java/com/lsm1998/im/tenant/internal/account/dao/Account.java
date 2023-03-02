@@ -12,8 +12,10 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = true)
 @TableName("tenant_account")
 @Data
-public class TenantAccount extends BaseModel
+public class Account extends BaseModel
 {
+    private String appid;
+
     private String username;
 
     private String password;
@@ -32,10 +34,6 @@ public class TenantAccount extends BaseModel
     private GenderType genderType;
 
     private String birthday;
-
-    private String money;
-
-    private Integer integral;
 
     private Date lastLoginTime;
 

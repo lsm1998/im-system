@@ -10,4 +10,6 @@ public class ContextHolder
     private String remoteIp;
 
     private Long userId;
+
+    private String appid;
 }

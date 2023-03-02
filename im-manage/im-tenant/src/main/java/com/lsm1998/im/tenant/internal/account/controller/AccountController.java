@@ -1,18 +1,16 @@
 package com.lsm1998.im.tenant.internal.account.controller;
 
 import com.lsm1998.im.common.AjaxResponse;
-import com.lsm1998.im.tenant.internal.account.dto.request.LoginRequest;
 import com.lsm1998.im.tenant.internal.account.service.AccountService;
 import com.lsm1998.im.tenant.middleware.interceptor.ContextHolder;
 import jakarta.annotation.Resource;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/account")
-public class LoginController
+public class AccountController
 {
     @Resource
     private ContextHolder contextHolder;
@@ -20,10 +18,9 @@ public class LoginController
     @Resource
     private AccountService userService;
 
-    @PostMapping("/login")
-    public AjaxResponse login(@RequestBody LoginRequest request)
+    @GetMapping("/profile")
+    public AjaxResponse profile()
     {
-        request.setRemoteIp(contextHolder.getRemoteIp());
-        return AjaxResponse.success(userService.login(request));
+        return AjaxResponse.success(userService.profile(contextHolder.getUserId()));
     }
 }

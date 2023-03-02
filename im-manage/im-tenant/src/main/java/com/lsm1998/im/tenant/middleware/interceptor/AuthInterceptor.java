@@ -21,7 +21,7 @@ public class AuthInterceptor implements HandlerInterceptor
     @Value("${jwt.secretKey}")
     private String secretKey;
 
-    private Long getUserId(String token) throws RuntimeException
+    private void setContextHolder(String token) throws RuntimeException
     {
         JwtUtil.ClaimsParse claimsParse = JwtUtil.parseToken(secretKey, token);
         if (!claimsParse.isVerify())
@@ -32,11 +32,12 @@ public class AuthInterceptor implements HandlerInterceptor
             throw new RuntimeException("token已过期");
         }
         Claims claims = claimsParse.getClaims();
-        if (claims != null)
+        if (claims == null)
         {
-            return claims.get("userId", Long.class);
+            throw new RuntimeException("Claims is null");
         }
-        return 0L;
+        contextHolder.setUserId(claims.get("userId", Long.class));
+        contextHolder.setAppid(claims.get("appid", String.class));
     }
 
     @Override
@@ -53,8 +54,7 @@ public class AuthInterceptor implements HandlerInterceptor
             try
             {
                 // 设置当前用户
-                Long userId = getUserId(request.getHeader("token"));
-                contextHolder.setUserId(userId);
+                setContextHolder(request.getHeader("token"));
             } catch (RuntimeException e)
             {
                 response.setStatus(401);
