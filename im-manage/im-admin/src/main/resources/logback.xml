@@ -2,8 +2,8 @@
 <configuration>
     <!-- 日志存放路径 -->
     <!-- mac配置 -->
-<!--	<property name="log.path" value="/Users/liushiming/IdeaProjects/im-system/logs" />-->
-    <property name="log.path" value="/logs" />
+<!--	<property name="log.path" value="/Users/liushiming/IdeaProjects/im-system/logs/im-admin" />-->
+    <property name="log.path" value="/logs/im-admin" />
     <!-- 日志输出格式 -->
 	<property name="log.pattern" value="%d{HH:mm:ss.SSS} [%thread] %-5level %logger{20} - [%method,%line] - %msg%n" />
 
