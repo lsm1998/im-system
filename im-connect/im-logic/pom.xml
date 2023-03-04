@@ -17,8 +17,7 @@
     <dependencies>
         <dependency>
             <groupId>com.lsm1998.im</groupId>
-            <artifactId>im-common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <artifactId>im-web-common</artifactId>
         </dependency>
 
         <dependency>

@@ -1,5 +1,7 @@
 package com.lsm1998.im.common;
 
+import javax.servlet.http.PushBuilder;
+
 public class Code
 {
     // OK
@@ -21,4 +23,13 @@ public class Code
 
     public static final int APPID_INSERT_ERROR_CODE = 20003;
     public static final String APPID_INSERT_ERROR_MESSAGE = "appid写入失败";
+
+    public static final int ACCESS_TOKEN_CREATE_EXPIRE_CODE = 20004;
+    public static final String ACCESS_TOKEN_CREATE_EXPIRE_MESSAGE = "accessToken创建过期";
+
+    public static final int SIGNATURE_ERROR_CODE =20005;
+    public static final String SIGNATURE_ERROR_MESSAGE = "签名错误";
+
+    public static final int APPID_NOT_EXIST_CODE = 20006;
+    public static final String APPID_NOT_EXIST_MESSAGE = "appid不存在";
 }
