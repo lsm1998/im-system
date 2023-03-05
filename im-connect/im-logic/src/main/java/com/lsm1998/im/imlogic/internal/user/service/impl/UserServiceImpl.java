@@ -15,6 +15,7 @@ public class UserServiceImpl implements UserService
 
     private boolean checkSignature(CreateAccessTokenRequest tokenRequest)
     {
+        tokenRequest.getSignature();
         return true;
     }
 
