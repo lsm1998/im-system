@@ -1,9 +1,14 @@
 package com.lsm1998.im.imlogic.internal.user.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.lsm1998.im.common.exception.ServiceException;
+import com.lsm1998.im.imlogic.internal.user.dao.AccessToken;
+import com.lsm1998.im.imlogic.internal.user.dao.mapper.AccessTokenMapper;
 import com.lsm1998.im.imlogic.internal.user.dto.request.CreateAccessTokenRequest;
 import com.lsm1998.im.imlogic.internal.user.dto.response.CreateAccessTokenResponse;
 import com.lsm1998.im.imlogic.internal.user.service.UserService;
+import com.lsm1998.im.imlogic.utils.SignatureUtil;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import static com.lsm1998.im.common.Code.*;
@@ -13,10 +18,21 @@ public class UserServiceImpl implements UserService
 {
     private static final int CREATE_EXPIRE = 1000 * 10;
 
+    @Resource
+    private AccessTokenMapper accessTokenMapper;
+
     private boolean checkSignature(CreateAccessTokenRequest tokenRequest)
     {
-        tokenRequest.getSignature();
-        return true;
+        // 根据accessKey获取secretKey
+        QueryWrapper<AccessToken> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("access_key", tokenRequest.getAccessKey());
+        AccessToken accessToken = accessTokenMapper.selectOne(queryWrapper);
+        if (accessToken == null)
+        {
+            throw new ServiceException(ACCESS_KEY_NOT_EXIST_CODE, ACCESS_KEY_NOT_EXIST_MESSAGE);
+        }
+        String signature = SignatureUtil.signature(tokenRequest.getCreateTime(), accessToken.getSecretKey(), tokenRequest.getBody());
+        return tokenRequest.getSignature().equals(signature);
     }
 
     @Override

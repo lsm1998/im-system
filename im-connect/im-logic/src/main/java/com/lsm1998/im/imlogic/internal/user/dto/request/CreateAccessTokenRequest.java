@@ -7,9 +7,9 @@ import lombok.Data;
 public class CreateAccessTokenRequest
 {
     /**
-     * appid
+     * accessKey
      */
-    private String appid;
+    private String accessKey;
 
     /**
      * mid
@@ -17,7 +17,7 @@ public class CreateAccessTokenRequest
     private String mid;
 
     /**
-     * 创建时间
+     * 创建时间，单位毫秒
      */
     private Long createTime;
 

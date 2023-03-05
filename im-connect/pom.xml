@@ -12,7 +12,6 @@
     <artifactId>im-connect</artifactId>
     <packaging>pom</packaging>
 
-
     <modules>
         <module>im-comet</module>
         <module>im-logic</module>

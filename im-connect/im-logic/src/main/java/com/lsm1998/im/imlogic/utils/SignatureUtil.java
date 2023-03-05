@@ -6,6 +6,8 @@ import com.lsm1998.im.common.security.SHA256;
 import com.lsm1998.im.common.security.MD5;
 
 import java.security.NoSuchAlgorithmException;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 public class SignatureUtil
 {
@@ -24,6 +26,7 @@ public class SignatureUtil
     {
         try
         {
+            Date date = new Date(createTime);
             /**
              * 签名规则
              *

@@ -32,4 +32,7 @@ public class Code
 
     public static final int APPID_NOT_EXIST_CODE = 20006;
     public static final String APPID_NOT_EXIST_MESSAGE = "appid不存在";
+
+    public static final int ACCESS_KEY_NOT_EXIST_CODE = 20007;
+    public static final String ACCESS_KEY_NOT_EXIST_MESSAGE = "accessKey不存在";
 }
