@@ -59,11 +59,11 @@
                 <version>3.5.3.1</version>
             </dependency>
 
-            <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
-                <version>3.6.1</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>com.baomidou</groupId>-->
+<!--                <artifactId>dynamic-datasource-spring-boot-starter</artifactId>-->
+<!--                <version>3.6.1</version>-->
+<!--            </dependency>-->
 
             <dependency>
                 <groupId>com.baomidou</groupId>
@@ -147,7 +147,19 @@
                 <version>17.0.0</version>
                 <scope>compile</scope>
             </dependency>
-<!--            <dependency>-->
+
+            <dependency>
+                <groupId>io.etcd</groupId>
+                <artifactId>jetcd-core</artifactId>
+                <version>0.7.5</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.ibm.etcd</groupId>
+                <artifactId>etcd-java</artifactId>
+                <version>0.0.22</version>
+            </dependency>
+            <!--            <dependency>-->
 <!--                <groupId>com.clickhouse</groupId>-->
 <!--                <artifactId>clickhouse-jdbc</artifactId>-->
 <!--                <version>0.4.0</version>-->
