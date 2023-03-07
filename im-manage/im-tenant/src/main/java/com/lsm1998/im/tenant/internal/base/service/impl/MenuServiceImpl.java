@@ -1,5 +1,6 @@
 package com.lsm1998.im.tenant.internal.base.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lsm1998.im.tenant.internal.base.dao.Menu;
 import com.lsm1998.im.tenant.internal.base.dao.mapper.MenuMapper;
 import com.lsm1998.im.tenant.internal.base.dto.response.MenuData;
@@ -12,7 +13,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
-public class MenuServiceImpl implements MenuService
+public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements MenuService
 {
     @Resource
     private MenuMapper menuMapper;
@@ -20,7 +21,9 @@ public class MenuServiceImpl implements MenuService
     private List<MenuData> buildTree(List<Menu> menus)
     {
         List<MenuData> dataList = menus.stream().filter(menu -> menu.getPid() == 0).map(MenuData::new).toList();
-        Map<Long, MenuData> menuDataMap = dataList.stream().collect(Collectors.toMap(MenuData::getId, menuData -> menuData));
+        Map<Long, MenuData> menuDataMap = dataList.stream().
+                filter(menu -> menu.getPid() > 0).
+                collect(Collectors.toMap(MenuData::getId, menuData -> menuData));
         menus.forEach(menu ->
         {
             if (menu.getPid() == 0)

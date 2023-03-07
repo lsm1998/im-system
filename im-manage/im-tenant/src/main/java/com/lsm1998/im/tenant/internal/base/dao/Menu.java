@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
-@TableName("t_menu")
+@TableName("tenant_menu")
 @Data
 public class Menu extends BaseModel
 {

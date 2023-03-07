@@ -4,12 +4,14 @@ import com.lsm1998.im.common.AjaxResponse;
 import com.lsm1998.im.tenant.internal.account.service.AccountService;
 import com.lsm1998.im.tenant.middleware.interceptor.ContextHolder;
 import jakarta.annotation.Resource;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/account")
+@Slf4j
 public class AccountController
 {
     @Resource
