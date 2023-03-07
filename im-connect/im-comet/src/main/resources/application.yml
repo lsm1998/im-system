@@ -26,3 +26,6 @@ task:
     keepAliveSeconds: 300
     # 队列容量
     queueCapacity: 50
+
+etcd:
+  endpoints: 119.91.113.111:2379
