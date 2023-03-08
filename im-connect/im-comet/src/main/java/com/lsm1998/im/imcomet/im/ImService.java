@@ -59,7 +59,7 @@ public class ImService
                             // 自定义解码器
                             pipeline.addLast(new MessageDecoder());
                             // 自定义编码器
-                            // pipeline.addLast(new MessageEncoder());
+                            pipeline.addLast(new MessageEncoder());
                             // 自定义处理器
                             pipeline.addLast(new DiscardServerHandler());
                             // 心跳

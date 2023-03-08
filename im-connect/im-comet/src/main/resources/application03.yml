@@ -3,12 +3,12 @@ im:
     bucketNum: 32
   server:
     host: 0.0.0.0
-    port: 8001
-    nodeId: im-01
+    port: 8003
+    nodeId: im-03
 
 grpc:
   server:
-    port: 6001
+    port: 6003
 spring:
   application:
     name: im-comet-grpc-server

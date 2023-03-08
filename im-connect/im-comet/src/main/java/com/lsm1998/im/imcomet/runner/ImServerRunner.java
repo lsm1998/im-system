@@ -26,6 +26,9 @@ public class ImServerRunner implements ApplicationRunner
     @Resource(name = "imThreadPool")
     private Executor executor;
 
+    @Value("${im.server.nodeId}")
+    private String nodeId;
+
     @Override
     public void run(ApplicationArguments args)
     {
