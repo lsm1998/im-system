@@ -1,7 +1,7 @@
-package com.lsm1998.im.imcomet.im.wrap;
+package com.lsm1998.im.imcomet.runner.im.wrap;
 
 import com.lsm1998.im.common.utils.CityHashUtil;
-import com.lsm1998.im.imcomet.im.wrap.bucket.Bucket;
+import com.lsm1998.im.imcomet.runner.im.wrap.bucket.Bucket;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package com.lsm1998.im.imcomet.im.protoc;
+package com.lsm1998.im.imcomet.runner.im.protoc;
 
 import lombok.Data;
 

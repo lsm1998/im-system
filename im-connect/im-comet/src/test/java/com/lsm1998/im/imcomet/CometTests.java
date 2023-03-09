@@ -1,6 +1,6 @@
 package com.lsm1998.im.imcomet;
 
-import com.lsm1998.im.imcomet.im.protoc.Message;
+import com.lsm1998.im.imcomet.runner.im.protoc.Message;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;

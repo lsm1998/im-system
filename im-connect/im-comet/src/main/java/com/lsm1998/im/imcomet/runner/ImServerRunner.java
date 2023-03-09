@@ -1,6 +1,6 @@
 package com.lsm1998.im.imcomet.runner;
 
-import com.lsm1998.im.imcomet.im.ImService;
+import com.lsm1998.im.imcomet.runner.im.ImService;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

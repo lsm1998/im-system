@@ -1,6 +1,6 @@
 package com.lsm1998.im.imcomet.runner;
 
-import com.lsm1998.im.imcomet.grpc.CometService;
+import com.lsm1998.im.imcomet.runner.grpc.CometService;
 import io.grpc.Grpc;
 import io.grpc.InsecureServerCredentials;
 import io.grpc.Server;

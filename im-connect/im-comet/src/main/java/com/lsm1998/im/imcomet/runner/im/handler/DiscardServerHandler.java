@@ -1,6 +1,6 @@
-package com.lsm1998.im.imcomet.im.handler;
+package com.lsm1998.im.imcomet.runner.im.handler;
 
-import com.lsm1998.im.imcomet.im.protoc.Message;
+import com.lsm1998.im.imcomet.runner.im.protoc.Message;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;

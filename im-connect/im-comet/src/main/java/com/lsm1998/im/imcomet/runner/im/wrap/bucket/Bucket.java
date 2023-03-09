@@ -1,4 +1,4 @@
-package com.lsm1998.im.imcomet.im.wrap.bucket;
+package com.lsm1998.im.imcomet.runner.im.wrap.bucket;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

@@ -1,4 +1,4 @@
-package com.lsm1998.im.imcomet.im.gateway;
+package com.lsm1998.im.imcomet.runner.im.gateway;
 
 import io.netty.channel.socket.nio.NioSocketChannel;
 

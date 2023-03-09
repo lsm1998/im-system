@@ -1,0 +1,18 @@
+参考链接：
+https://www.jianshu.com/p/21d33d6cb56c
+
+cd /opt
+
+wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-6.0.4.tgz
+
+tar -zxvf mongodb-linux-x86_64-rhel70-6.0.4.tgz
+
+mv mongodb-linux-x86_64-rhel70-6.0.4 mongodb
+
+cd mongodb
+
+分机器执行
+mkdir data/mater
+mkdir data/salve1
+mkdir data/salve2
+mkdir data/arbite

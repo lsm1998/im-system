@@ -1,6 +1,6 @@
-package com.lsm1998.im.imcomet.im.protoc.encoded;
+package com.lsm1998.im.imcomet.runner.im.protoc.encoded;
 
-import com.lsm1998.im.imcomet.im.protoc.Message;
+import com.lsm1998.im.imcomet.runner.im.protoc.Message;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToMessageDecoder;
