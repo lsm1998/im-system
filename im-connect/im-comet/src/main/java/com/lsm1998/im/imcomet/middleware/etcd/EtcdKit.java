@@ -1,33 +1,65 @@
 package com.lsm1998.im.imcomet.middleware.etcd;
 
+import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.ByteString;
+import com.ibm.etcd.api.KeyValue;
 import com.ibm.etcd.api.LeaseGrantResponse;
+import com.ibm.etcd.api.RangeResponse;
 import com.ibm.etcd.client.EtcdClient;
 import com.ibm.etcd.client.kv.KvClient;
 import com.ibm.etcd.client.lease.PersistentLease;
-import jakarta.annotation.PostConstruct;
-import jakarta.annotation.Resource;
-import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-@Component
 public class EtcdKit
 {
-    @Resource
-    private EtcdClient etcdClient;
+    private final EtcdClient etcdClient;
 
-    private static final int DEFAULT_TTL = 5;
+    private final KvClient kvClient;
 
-    private KvClient kvClient;
+    private int ttl = 4;
 
-    @PostConstruct
-    public void init()
+    public EtcdKit(String endpoints)
     {
-        this.kvClient = etcdClient.getKvClient();
+        this(endpoints, 4);
+    }
+
+    public EtcdKit(List<String> endpoints)
+    {
+        this(endpoints, 4);
+    }
+
+    public EtcdKit(String endpoints, int ttl)
+    {
+        this(endpoints, null, ttl);
+
+    }
+
+    public EtcdKit(List<String> endpoints, int ttl)
+    {
+        this(null, endpoints, ttl);
+    }
+
+    private EtcdKit(String endpoints, List<String> list, int ttl)
+    {
+        if (ttl > 0)
+        {
+            this.ttl = ttl;
+        }
+        EtcdClient.Builder builder;
+        if (endpoints != null)
+        {
+            builder = EtcdClient.forEndpoints(endpoints);
+        } else
+        {
+            builder = EtcdClient.forEndpoints(list);
+        }
+        this.etcdClient = builder.withPlainText().build();
+        this.kvClient = this.etcdClient.getKvClient();
     }
 
     public void put(String key, String value)
@@ -44,7 +76,7 @@ public class EtcdKit
 
     public void register(String key, String value)
     {
-        register(key, value, Duration.ofSeconds(DEFAULT_TTL));
+        register(key, value, Duration.ofSeconds(ttl));
     }
 
     public void register(String key, String value, Duration ttl)
@@ -66,5 +98,14 @@ public class EtcdKit
                 keepAliveFreq((int) ttl.getSeconds()).
                 start();
         this.put(key, value, lease.get());
+    }
+
+    public List<KeyValue> get(String key) throws ExecutionException, InterruptedException
+    {
+        ByteString byteString = ByteString.copyFrom(key.getBytes(StandardCharsets.UTF_8));
+        KvClient.FluentRangeRequest request = kvClient.get(byteString);
+        ListenableFuture<RangeResponse> future = request.async();
+        RangeResponse response = future.get();
+        return response.getKvsList();
     }
 }

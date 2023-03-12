@@ -1,14 +1,15 @@
 im:
-  comet:
-    bucketNum: 32
   server:
     host: 0.0.0.0
     port: 8001
     nodeId: im-01
+    bucketNum: 32
 
 grpc:
   server:
     port: 6001
+  client:
+
 spring:
   application:
     name: im-comet-grpc-server
@@ -26,4 +27,6 @@ task:
     queueCapacity: 50
 
 etcd:
-  endpoints: 119.91.113.111:2379
+  endpoints:
+    - 119.91.113.111:2379
+  prefix: /im/comet/

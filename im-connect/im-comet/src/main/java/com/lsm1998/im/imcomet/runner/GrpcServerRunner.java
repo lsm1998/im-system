@@ -1,9 +1,11 @@
 package com.lsm1998.im.imcomet.runner;
 
+import com.lsm1998.im.imcomet.config.GrpcServeConfig;
 import com.lsm1998.im.imcomet.runner.grpc.CometService;
 import io.grpc.Grpc;
 import io.grpc.InsecureServerCredentials;
 import io.grpc.Server;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
@@ -21,19 +23,19 @@ public class GrpcServerRunner implements ApplicationRunner
 {
     private Server server;
 
-    @Value("${grpc.server.port:8866}")
-    private int port;
+    @Resource
+    private GrpcServeConfig grpcServeConfig;
 
     @Override
     public void run(ApplicationArguments args) throws Exception
     {
-        server = Grpc.newServerBuilderForPort(port, InsecureServerCredentials.create())
+        server = Grpc.newServerBuilderForPort(grpcServeConfig.getPort(), InsecureServerCredentials.create())
                 .addService(new CometService())
                 // .intercept(new ServerInterceptor())  // add the Interceptor
                 .build()
                 .start();
 
-        log.info("gRPC Server started, listening on " + port);
+        log.info("gRPC Server started, listening on " + grpcServeConfig.getPort());
         Runtime.getRuntime().addShutdownHook(new Thread()
         {
             @Override
