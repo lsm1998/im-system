@@ -1,6 +1,10 @@
 spring:
   profiles:
-    active: redis,mongo,druid
+    active: redis,mongo,druid,grpc
 
 server:
   port: 9020
+
+jwt:
+  secretKey: uGlrwikdKkdasijwinxzcnmpLKkkpoplmiiKsdasd
+  expire: 1000 * 60 * 24 * 2

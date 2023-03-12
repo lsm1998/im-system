@@ -1,6 +1,5 @@
 package com.lsm1998.im.imcomet.runner;
 
-import com.ibm.etcd.api.KeyValue;
 import com.lsm1998.im.common.net.LocalHost;
 import com.lsm1998.im.imcomet.config.EtcdConfig;
 import com.lsm1998.im.imcomet.config.ImConfig;
@@ -8,14 +7,11 @@ import com.lsm1998.im.imcomet.middleware.etcd.EtcdKit;
 import com.lsm1998.im.imcomet.runner.im.ImService;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import java.net.InetAddress;
 import java.time.Duration;
-import java.util.List;
 import java.util.concurrent.Executor;
 
 /**
@@ -44,6 +40,7 @@ public class ImServerRunner implements ApplicationRunner
         executor.execute(this::register);
     }
 
+    // 启动IM服务端
     public void start()
     {
         ImService imService = new ImService(imConfig.getHost(), imConfig.getPort());
@@ -57,6 +54,7 @@ public class ImServerRunner implements ApplicationRunner
         }
     }
 
+    // 注册到etcd
     public void register()
     {
         try

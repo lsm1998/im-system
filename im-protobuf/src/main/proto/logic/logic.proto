@@ -6,6 +6,8 @@ option java_package = "com.lsm1998.im.protobuf.logic";
 
 message HandshakeReq{
   string token = 1;
+  string node_id = 2;
+  string appid = 3;
 }
 
 message HandshakeResp{

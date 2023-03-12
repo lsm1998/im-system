@@ -5,12 +5,15 @@ import com.lsm1998.im.imcomet.runner.im.wrap.bucket.Bucket;
 import com.lsm1998.im.protobuf.comet.Comet;
 import com.lsm1998.im.protobuf.comet.ImCometServiceGrpc;
 import io.grpc.stub.StreamObserver;
-import jakarta.annotation.Resource;
 
 public class CometService extends ImCometServiceGrpc.ImCometServiceImplBase
 {
-    @Resource
-    private Buckets buckets;
+    private final Buckets buckets;
+
+    public CometService(Buckets buckets)
+    {
+        this.buckets = buckets;
+    }
 
     @Override
     public void push(Comet.PushReq request, StreamObserver<Comet.Empty> responseObserver)
