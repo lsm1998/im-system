@@ -72,4 +72,12 @@ public interface MessageService
      * @return int
      */
     int getMessageCount(Long userId);
+
+    /**
+     * 保存离线消息
+     *
+     * @param message 消息
+     * @return int
+     */
+    int saveOfflineMessage(Message... message);
 }

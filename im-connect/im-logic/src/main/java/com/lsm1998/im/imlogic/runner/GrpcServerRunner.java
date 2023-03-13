@@ -1,5 +1,6 @@
 package com.lsm1998.im.imlogic.runner;
 
+import com.lsm1998.im.imlogic.internal.user.service.UserService;
 import com.lsm1998.im.imlogic.middleware.grpc.GrpcServeConfig;
 import com.lsm1998.im.imlogic.runner.grpc.LogicService;
 import io.grpc.Grpc;
@@ -25,11 +26,14 @@ public class GrpcServerRunner implements ApplicationRunner
     @Resource
     private GrpcServeConfig grpcServeConfig;
 
+    @Resource
+    private UserService userService;
+
     @Override
     public void run(ApplicationArguments args) throws Exception
     {
         server = Grpc.newServerBuilderForPort(grpcServeConfig.getPort(), InsecureServerCredentials.create())
-                .addService(new LogicService())
+                .addService(new LogicService(userService))
                 // .intercept(new ServerInterceptor())  // add the Interceptor
                 .build()
                 .start();

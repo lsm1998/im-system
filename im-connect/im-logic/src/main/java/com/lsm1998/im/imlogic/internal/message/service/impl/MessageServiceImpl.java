@@ -9,6 +9,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -99,5 +100,12 @@ public class MessageServiceImpl implements MessageService
     public int getMessageCount(Long userId)
     {
         return 0;
+    }
+
+    @Override
+    public int saveOfflineMessage(Message... message)
+    {
+        List<Message> list = messageRepo.saveAll(Arrays.asList(message));
+        return list.size();
     }
 }

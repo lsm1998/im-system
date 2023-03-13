@@ -1,5 +1,7 @@
 package com.lsm1998.im.common.enums;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum MessageType
 {
     /**
@@ -39,6 +41,7 @@ public enum MessageType
         this.value = value;
     }
 
+    @JsonValue
     public Integer getValue()
     {
         return value;

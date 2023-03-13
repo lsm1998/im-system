@@ -29,6 +29,30 @@ public final class Logic {
      */
     com.google.protobuf.ByteString
         getTokenBytes();
+
+    /**
+     * <code>string node_id = 2;</code>
+     * @return The nodeId.
+     */
+    String getNodeId();
+    /**
+     * <code>string node_id = 2;</code>
+     * @return The bytes for nodeId.
+     */
+    com.google.protobuf.ByteString
+        getNodeIdBytes();
+
+    /**
+     * <code>string appid = 3;</code>
+     * @return The appid.
+     */
+    String getAppid();
+    /**
+     * <code>string appid = 3;</code>
+     * @return The bytes for appid.
+     */
+    com.google.protobuf.ByteString
+        getAppidBytes();
   }
   /**
    * Protobuf type {@code im.HandshakeReq}
@@ -44,6 +68,8 @@ public final class Logic {
     }
     private HandshakeReq() {
       token_ = "";
+      nodeId_ = "";
+      appid_ = "";
     }
 
     @Override
@@ -110,6 +136,84 @@ public final class Logic {
       }
     }
 
+    public static final int NODE_ID_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile Object nodeId_ = "";
+    /**
+     * <code>string node_id = 2;</code>
+     * @return The nodeId.
+     */
+    @Override
+    public String getNodeId() {
+      Object ref = nodeId_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        nodeId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string node_id = 2;</code>
+     * @return The bytes for nodeId.
+     */
+    @Override
+    public com.google.protobuf.ByteString
+        getNodeIdBytes() {
+      Object ref = nodeId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (String) ref);
+        nodeId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int APPID_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
+    private volatile Object appid_ = "";
+    /**
+     * <code>string appid = 3;</code>
+     * @return The appid.
+     */
+    @Override
+    public String getAppid() {
+      Object ref = appid_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        appid_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string appid = 3;</code>
+     * @return The bytes for appid.
+     */
+    @Override
+    public com.google.protobuf.ByteString
+        getAppidBytes() {
+      Object ref = appid_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (String) ref);
+        appid_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @Override
     public final boolean isInitialized() {
@@ -127,6 +231,12 @@ public final class Logic {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(token_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, token_);
       }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(nodeId_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, nodeId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(appid_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, appid_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -138,6 +248,12 @@ public final class Logic {
       size = 0;
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(token_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, token_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(nodeId_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, nodeId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(appid_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, appid_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -156,6 +272,10 @@ public final class Logic {
 
       if (!getToken()
           .equals(other.getToken())) return false;
+      if (!getNodeId()
+          .equals(other.getNodeId())) return false;
+      if (!getAppid()
+          .equals(other.getAppid())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -169,6 +289,10 @@ public final class Logic {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + TOKEN_FIELD_NUMBER;
       hash = (53 * hash) + getToken().hashCode();
+      hash = (37 * hash) + NODE_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getNodeId().hashCode();
+      hash = (37 * hash) + APPID_FIELD_NUMBER;
+      hash = (53 * hash) + getAppid().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -299,6 +423,8 @@ public final class Logic {
         super.clear();
         bitField0_ = 0;
         token_ = "";
+        nodeId_ = "";
+        appid_ = "";
         return this;
       }
 
@@ -334,6 +460,12 @@ public final class Logic {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
           result.token_ = token_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.nodeId_ = nodeId_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.appid_ = appid_;
         }
       }
 
@@ -386,6 +518,16 @@ public final class Logic {
           bitField0_ |= 0x00000001;
           onChanged();
         }
+        if (!other.getNodeId().isEmpty()) {
+          nodeId_ = other.nodeId_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        if (!other.getAppid().isEmpty()) {
+          appid_ = other.appid_;
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -417,6 +559,16 @@ public final class Logic {
                 bitField0_ |= 0x00000001;
                 break;
               } // case 10
+              case 18: {
+                nodeId_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                appid_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -502,6 +654,150 @@ public final class Logic {
         checkByteStringIsUtf8(value);
         token_ = value;
         bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private Object nodeId_ = "";
+      /**
+       * <code>string node_id = 2;</code>
+       * @return The nodeId.
+       */
+      public String getNodeId() {
+        Object ref = nodeId_;
+        if (!(ref instanceof String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          String s = bs.toStringUtf8();
+          nodeId_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      /**
+       * <code>string node_id = 2;</code>
+       * @return The bytes for nodeId.
+       */
+      public com.google.protobuf.ByteString
+          getNodeIdBytes() {
+        Object ref = nodeId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (String) ref);
+          nodeId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string node_id = 2;</code>
+       * @param value The nodeId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNodeId(
+          String value) {
+        if (value == null) { throw new NullPointerException(); }
+        nodeId_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string node_id = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNodeId() {
+        nodeId_ = getDefaultInstance().getNodeId();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string node_id = 2;</code>
+       * @param value The bytes for nodeId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNodeIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        nodeId_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+
+      private Object appid_ = "";
+      /**
+       * <code>string appid = 3;</code>
+       * @return The appid.
+       */
+      public String getAppid() {
+        Object ref = appid_;
+        if (!(ref instanceof String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          String s = bs.toStringUtf8();
+          appid_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      /**
+       * <code>string appid = 3;</code>
+       * @return The bytes for appid.
+       */
+      public com.google.protobuf.ByteString
+          getAppidBytes() {
+        Object ref = appid_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (String) ref);
+          appid_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string appid = 3;</code>
+       * @param value The appid to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAppid(
+          String value) {
+        if (value == null) { throw new NullPointerException(); }
+        appid_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string appid = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAppid() {
+        appid_ = getDefaultInstance().getAppid();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string appid = 3;</code>
+       * @param value The bytes for appid to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAppidBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        appid_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -988,11 +1284,12 @@ public final class Logic {
       descriptor;
   static {
     String[] descriptorData = {
-      "\n\013logic.proto\022\002im\"\035\n\014HandshakeReq\022\r\n\005tok" +
-      "en\030\001 \001(\t\"\017\n\rHandshakeResp2B\n\016ImLogicServ" +
-      "ice\0220\n\tHandshake\022\020.im.HandshakeReq\032\021.im." +
-      "HandshakeRespB\037\n\035com.lsm1998.im.protobuf" +
-      ".logicb\006proto3"
+      "\n\013logic.proto\022\002im\"=\n\014HandshakeReq\022\r\n\005tok" +
+      "en\030\001 \001(\t\022\017\n\007node_id\030\002 \001(\t\022\r\n\005appid\030\003 \001(\t" +
+      "\"\017\n\rHandshakeResp2B\n\016ImLogicService\0220\n\tH" +
+      "andshake\022\020.im.HandshakeReq\032\021.im.Handshak" +
+      "eRespB\037\n\035com.lsm1998.im.protobuf.logicb\006" +
+      "proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1003,7 +1300,7 @@ public final class Logic {
     internal_static_im_HandshakeReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_im_HandshakeReq_descriptor,
-        new String[] { "Token", });
+        new String[] { "Token", "NodeId", "Appid", });
     internal_static_im_HandshakeResp_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_im_HandshakeResp_fieldAccessorTable = new

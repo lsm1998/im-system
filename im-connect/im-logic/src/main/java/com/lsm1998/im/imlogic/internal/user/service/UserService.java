@@ -6,4 +6,6 @@ import com.lsm1998.im.imlogic.internal.user.dto.response.CreateAccessTokenRespon
 public interface UserService
 {
     CreateAccessTokenResponse createAccessToken(CreateAccessTokenRequest tokenRequest);
+
+    void handshake(String appid, String token, String nodeId);
 }

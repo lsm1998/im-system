@@ -1,6 +1,6 @@
 package com.lsm1998.im.protobuf.logic;
 
-import javax.annotation.processing.Generated;
+import jakarta.annotation.Generated;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;

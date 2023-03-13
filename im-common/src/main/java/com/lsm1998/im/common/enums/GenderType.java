@@ -1,5 +1,7 @@
 package com.lsm1998.im.common.enums;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum GenderType
 {
     /**
@@ -24,6 +26,7 @@ public enum GenderType
         this.value = value;
     }
 
+    @JsonValue
     public String getValue()
     {
         return value;

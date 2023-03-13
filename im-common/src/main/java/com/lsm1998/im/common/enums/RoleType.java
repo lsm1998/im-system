@@ -1,6 +1,7 @@
 package com.lsm1998.im.common.enums;
 
 import com.baomidou.mybatisplus.annotation.EnumValue;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum RoleType
 {
@@ -22,6 +23,7 @@ public enum RoleType
         this.value = value;
     }
 
+    @JsonValue
     public Integer getValue()
     {
         return value;
