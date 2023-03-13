@@ -1,6 +1,5 @@
 package com.lsm1998.im.imlogic.internal.push.dto.request;
 
-import com.fasterxml.jackson.annotation.JsonValue;
 import com.lsm1998.im.common.enums.MessageType;
 import com.lsm1998.im.imlogic.internal.message.dao.Message;
 import jakarta.validation.constraints.NotEmpty;

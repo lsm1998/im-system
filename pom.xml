@@ -64,6 +64,11 @@
 <!--                <artifactId>dynamic-datasource-spring-boot-starter</artifactId>-->
 <!--                <version>3.6.1</version>-->
 <!--            </dependency>-->
+            <dependency>
+                <groupId>io.grpc</groupId>
+                <artifactId>grpc-all</artifactId>
+                <version>1.53.0</version>
+            </dependency>
 
             <dependency>
                 <groupId>com.baomidou</groupId>

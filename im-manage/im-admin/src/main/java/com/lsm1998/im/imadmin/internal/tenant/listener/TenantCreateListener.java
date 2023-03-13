@@ -1,4 +1,4 @@
-package com.lsm1998.im.imadmin.internal.tenant.listen;
+package com.lsm1998.im.imadmin.internal.tenant.listener;
 
 import com.lsm1998.im.imadmin.internal.account.service.AccountService;
 import com.lsm1998.im.imadmin.internal.role.sevice.RoleService;
@@ -6,7 +6,6 @@ import com.lsm1998.im.imadmin.internal.tenant.dao.Tenant;
 import com.rabbitmq.client.Channel;
 import jakarta.annotation.Resource;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.amqp.core.Exchange;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
@@ -18,7 +17,7 @@ import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 @Component
 @RabbitListener(queues = "tenant_create")
-public class TenantCreateListen
+public class TenantCreateListener
 {
     @Resource
     private RoleService roleService;

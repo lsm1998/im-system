@@ -1,5 +1,8 @@
 package com.lsm1998.im.imlogic.internal.push.service.impl;
 
+import com.lsm1998.im.common.dto.BroadcastMessage;
+import com.lsm1998.im.common.dto.GroupMessage;
+import com.lsm1998.im.common.dto.PushMessage;
 import com.lsm1998.im.imlogic.internal.message.service.MessageService;
 import com.lsm1998.im.imlogic.internal.push.dto.request.BroadcastRequest;
 import com.lsm1998.im.imlogic.internal.push.dto.request.PushGroupRequest;
@@ -8,6 +11,7 @@ import com.lsm1998.im.imlogic.internal.push.service.PushService;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
@@ -17,11 +21,20 @@ import java.util.*;
 @Slf4j
 public class PushServiceImpl implements PushService
 {
+    private static final String PUSH_TOPIC = "im_push";
+
+    private static final String BROADCAST_TOPIC = "im_broadcast";
+
+    private static final String PUSH_GROUP_TOPIC = "im_group";
+
     @Resource
     private RedisTemplate<String, String> redisTemplate;
 
     @Resource
     private MessageService messageService;
+
+    @Resource
+    private KafkaTemplate<String, Object> kafkaTemplate;
 
     @Override
     public void push(PushRequest request)
@@ -47,18 +60,38 @@ public class PushServiceImpl implements PushService
             }
         }
 
-        // todo 推送 MQ 至 job 消费
+        nodeMap.forEach((node, list) ->
+        {
+            PushMessage pushMessage = new PushMessage();
+            pushMessage.setContent(request.getContent());
+            pushMessage.setFormMid(request.getFromMid());
+            pushMessage.setToMid(list.toArray(new String[]{}));
+            pushMessage.setNodeId(node);
+            pushMessage.setType(request.getType().getValue());
+            pushMessage.setExt(request.getExt());
+            kafkaTemplate.send(PUSH_TOPIC, pushMessage);
+        });
     }
 
     @Override
     public void broadcast(BroadcastRequest request)
     {
-
+        BroadcastMessage message = new BroadcastMessage();
+        message.setContent(request.getContent());
+        message.setType(request.getType().getValue());
+        message.setFromId(request.getFroMid());
+        kafkaTemplate.send(BROADCAST_TOPIC, message);
     }
 
     @Override
     public void pushGroup(PushGroupRequest request)
     {
-
+        GroupMessage message = new GroupMessage();
+        message.setContent(request.getContent());
+        message.setType(request.getType().getValue());
+        message.setFroMid(request.getFromMid());
+        message.setGroupId(request.getGroupId());
+        message.setExt(request.getExt());
+        kafkaTemplate.send(PUSH_GROUP_TOPIC, message);
     }
 }

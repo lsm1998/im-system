@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: mongo
+    active: mongo,kafka
 
 grpc:
   client:

@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: redis,mongo,druid,grpc
+    active: redis,mongo,druid,grpc,kafka
 
 server:
   port: 9020
